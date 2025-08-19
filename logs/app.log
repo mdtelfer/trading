@@ -6109,3 +6109,2367 @@ KeyError: 'currentTradingPeriod'
 2025-08-19 16:46:04.538 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
 2025-08-19 16:46:04.564 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
 2025-08-19 16:46:04.600 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
+2025-08-19 16:53:31.212 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:53:32.605 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:53:32.633 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 16:53:35.392 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:53:37.653 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:54:24.900 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:54:25.481 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:54:28.980 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:57:43.256 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 16:57:43.311 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:57:45.488 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:57:48.403 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:57:49.604 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:57:53.509 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:57:54.155 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:57:58.220 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:57:58.632 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:02.275 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:03.706 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:06.338 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:08.797 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:10.377 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:13.910 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:14.420 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:18.467 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:19.041 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:22.528 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:24.123 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:26.579 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:29.218 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:30.612 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:34.326 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:34.682 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:38.752 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:39.443 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:42.811 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:43.294 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 16:58:44.523 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:46.862 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:49.640 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:50.942 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:54.746 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:58:55.020 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:59.059 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:58:59.846 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:03.126 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:04.943 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:07.184 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:10.039 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:11.248 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:15.151 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:15.338 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:19.378 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:20.239 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:23.421 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:25.357 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:27.506 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:30.471 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:31.558 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:35.578 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:35.604 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:39.652 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:40.673 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:43.344 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 16:59:43.698 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:45.793 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:47.771 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:50.933 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:51.866 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:55.916 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 16:59:56.021 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 16:59:59.976 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:01.112 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:04.023 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:06.206 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:08.096 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:11.367 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:12.155 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:16.219 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:16.457 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:20.278 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:21.577 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:24.344 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:26.706 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:28.402 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:31.788 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:32.440 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:36.482 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:36.886 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:40.541 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:41.982 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:43.396 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:00:44.585 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:47.079 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:48.659 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:52.202 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:00:52.727 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:56.768 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:00:57.314 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:00.821 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:02.394 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:04.864 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:07.497 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:08.903 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:12.651 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:12.951 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:17.001 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:17.754 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:21.038 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:22.833 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:25.106 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:27.950 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:29.177 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:33.057 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:33.215 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:37.265 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:38.172 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:41.338 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:43.293 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:43.489 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:01:45.487 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:48.345 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:49.539 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:53.388 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:01:53.574 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:57.614 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:01:58.450 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:01.657 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:03.500 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:05.696 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:08.568 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:09.722 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:13.621 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:13.755 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:17.825 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:18.674 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:21.869 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:23.739 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:25.921 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:28.812 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:29.984 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:33.869 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:34.021 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:38.051 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:38.928 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:42.087 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:43.534 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:02:44.030 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:46.143 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:49.104 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:50.185 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:54.157 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:02:54.232 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:58.274 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:02:59.202 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:02.307 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:04.247 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:06.348 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:09.314 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:10.382 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:14.356 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:14.421 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:18.462 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:19.397 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:22.502 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:24.435 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:26.528 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:29.480 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:30.567 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:34.551 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:34.605 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:38.649 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 327, in main
+    q = get_move_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 141, in get_move_quote
+    return get_yahoo_index_quote("^MOVE")
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 130, in get_yahoo_index_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:03:39.612 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:43.576 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:03:44.528 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:03:44.679 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:45.318 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:03:46.044 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:03:46.826 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:03:47.586 | INFO     | __main__:main:397 - SKEW 153.1699981689453
+2025-08-19 17:03:48.617 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:03:48.840 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:03:49.076 | INFO     | __main__:_upsert_simple_fred:227 - T10YIE 2.35 (FRED:T10YIE)
+2025-08-19 17:03:49.309 | INFO     | __main__:_upsert_simple_fred:227 - REAL10Y 1.96 (FRED:DFII10)
+2025-08-19 17:03:49.750 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:49.974 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:03:54.842 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:03:59.917 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:00.441 | INFO     | __main__:main:451 - DXY 98.276 (DX-Y.NYB)
+2025-08-19 17:04:01.174 | INFO     | __main__:_upsert_yahoo_price:244 - COPPER 4.429500102996826
+2025-08-19 17:04:01.992 | INFO     | __main__:_upsert_yahoo_price:244 - GOLD_FUT 3358.89990234375
+2025-08-19 17:04:03.015 | INFO     | __main__:_upsert_yahoo_price:244 - HYG 80.37999725341797
+2025-08-19 17:04:03.922 | INFO     | __main__:_upsert_yahoo_price:244 - LQD 109.70999908447266
+2025-08-19 17:04:04.154 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:04:04.393 | INFO     | __main__:_upsert_simple_fred:227 - DBAA 6.04 (FRED:DBAA)
+2025-08-19 17:04:04.649 | INFO     | __main__:_upsert_simple_fred:227 - DAAA 5.39 (FRED:DAAA)
+2025-08-19 17:04:05.105 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:05.327 | INFO     | __main__:main:573 - CRYPTO F&G 56.0 (Greed)
+2025-08-19 17:04:10.237 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:12.623 | WARNING  | __main__:main:593 - PCR no disponible (CSV y HTML fallaron).
+2025-08-19 17:04:13.507 | INFO     | __main__:main:635 - HY OAS 2.88
+2025-08-19 17:04:13.787 | INFO     | __main__:main:652 - IG OAS 0.75
+2025-08-19 17:04:15.302 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:16.656 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:04:16.665 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:04:16.670 | INFO     | __main__:main:748 - HYG_LQD_RATIO 0.7326588088978866
+2025-08-19 17:04:16.674 | INFO     | __main__:main:780 - COPPER_GOLD_RATIO 0.0013187353692517125
+2025-08-19 17:04:20.368 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:25.413 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:30.463 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:35.514 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:40.562 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:43.615 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:04:44.216 | INFO     | __main__:main:803 - BREADTH 200d 74.4% (32/43)
+2025-08-19 17:04:45.605 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:50.648 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:04:55.704 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:00.767 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:05.813 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:10.882 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:12.517 | INFO     | __main__:main:826 - BREADTH 50d 69.0% (29/42)
+2025-08-19 17:05:15.943 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:20.989 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:26.037 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:31.076 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:36.142 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:41.189 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:43.659 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:05:44.024 | INFO     | __main__:main:850 - ADV-DEC 9.0 (A:27 D:18 U:0)
+2025-08-19 17:05:46.245 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:48.513 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:05:49.013 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:05:51.286 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:51.527 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:05:52.018 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:05:52.954 | INFO     | __main__:main:894 - FNG_STOCKS 52.0 via https://edition.cnn.com/markets/fear-and-greed
+2025-08-19 17:05:56.328 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:05:56.433 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:06:00.357 | INFO     | __main__:main:451 - DXY 98.2750015258789 (DX-Y.NYB)
+2025-08-19 17:06:01.403 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:06.444 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:11.496 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:16.553 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:21.592 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:26.652 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:31.699 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:36.757 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:41.805 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:43.684 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:06:46.860 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:51.930 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:56.979 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:06:57.801 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:07:00.996 | INFO     | __main__:main:451 - DXY 98.27200317382812 (DX-Y.NYB)
+2025-08-19 17:07:02.042 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:07.109 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:12.154 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:17.213 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:22.267 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:27.319 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:32.375 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:37.432 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:42.528 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:43.733 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:07:47.620 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:52.691 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:57.743 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:07:58.332 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:08:02.809 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:04.786 | INFO     | __main__:main:451 - DXY 98.27400207519531 (DX-Y.NYB)
+2025-08-19 17:08:07.854 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:13.025 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:18.084 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:23.204 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:28.251 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:33.325 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:38.392 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:43.459 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:43.782 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:08:44.228 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:08:45.223 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:08:48.522 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:53.569 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:56.586 | INFO     | __main__:main:367 - OVX 33.04
+2025-08-19 17:08:58.621 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:08:58.982 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:09:00.075 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:09:00.316 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:09:00.555 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:09:03.709 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:03.710 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:09:03.724 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:09:04.324 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:09:05.903 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:09:06.408 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:09:06.918 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:09:08.758 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:11.332 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:09:13.804 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:16.133 | INFO     | __main__:main:451 - DXY 98.27100372314453 (DX-Y.NYB)
+2025-08-19 17:09:18.847 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:23.903 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:28.962 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:34.032 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:39.080 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:43.812 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:09:44.125 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:49.172 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:54.213 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:09:59.273 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:04.328 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:09.370 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:12.139 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:10:13.530 | INFO     | __main__:main:451 - DXY 98.27200317382812 (DX-Y.NYB)
+2025-08-19 17:10:14.420 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:19.464 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:24.535 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:29.601 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:34.659 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:39.720 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:43.842 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:10:44.782 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:49.845 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:54.904 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:10:59.952 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:05.073 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:10.137 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:12.552 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:11:15.227 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:15.600 | INFO     | __main__:main:451 - DXY 98.2750015258789 (DX-Y.NYB)
+2025-08-19 17:11:20.290 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:25.327 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:30.395 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:35.433 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:40.495 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:43.864 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:11:45.541 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:50.585 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:11:55.638 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:00.679 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:05.744 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:10.781 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:15.816 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:16.051 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:12:20.874 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:20.972 | INFO     | __main__:main:451 - DXY 98.27799987792969 (DX-Y.NYB)
+2025-08-19 17:12:25.916 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:30.952 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:36.005 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:41.075 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:43.897 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:12:46.112 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:51.154 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:12:56.194 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:01.246 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:06.321 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:11.371 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:16.421 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:17.410 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:13:21.461 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:26.549 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:29.174 | INFO     | __main__:main:451 - DXY 98.28 (DX-Y.NYB)
+2025-08-19 17:13:31.648 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:36.703 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:41.750 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:43.957 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:13:46.791 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:46.914 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:13:51.831 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:56.892 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:13:58.876 | INFO     | __main__:main:352 - GVZ 14.82
+2025-08-19 17:14:02.005 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:03.281 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:14:04.240 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:14:04.728 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:14:05.002 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:14:05.258 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:14:07.072 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:08.019 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:14:08.027 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:14:08.546 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:14:10.097 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:14:10.609 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:14:11.114 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:14:12.107 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:17.173 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:18.191 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:14:21.007 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:14:22.229 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:27.276 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:32.315 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:37.371 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:42.438 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:43.993 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:14:47.490 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:52.531 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:14:57.578 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:02.672 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:07.759 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:12.830 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:17.885 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:19.465 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:15:20.874 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:15:22.932 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:27.972 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:33.030 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:38.097 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:43.136 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:44.037 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:15:48.214 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:53.276 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:15:58.347 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:03.409 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:08.471 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:13.514 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:18.563 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:20.045 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:16:21.434 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:16:23.621 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:28.684 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:33.733 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:38.774 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:43.836 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:44.108 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.134 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.142 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.150 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.154 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.164 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.168 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.172 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.179 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.184 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.186 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.190 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.199 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.202 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.204 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.213 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.216 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.219 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.224 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.230 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.237 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.244 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.247 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.250 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.252 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.257 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.263 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.265 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.267 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.269 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.272 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.279 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.282 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.284 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.286 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.288 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.295 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.298 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.300 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.303 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.306 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.312 | WARNING  | __main__:check_features:92 - ⚠️ feature_lag | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.316 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.318 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:44.321 | WARNING  | __main__:check_evaluator:122 - ⚠️ evaluator_idle | %s age=%ss > thr=%ss | %s
+2025-08-19 17:16:48.890 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:53.943 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:16:59.007 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:04.065 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:09.118 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:14.201 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:19.237 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:22.924 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:17:24.271 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:17:24.289 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:29.327 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:34.391 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:39.445 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:44.368 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:17:44.489 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:49.530 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:54.566 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:17:59.612 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:04.652 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:09.690 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:14.763 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:19.801 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:21.705 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:18:23.048 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:18:24.881 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:29.928 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:35.009 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:40.050 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:43.968 | INFO     | __main__:main:397 - SKEW 153.1699981689453
+2025-08-19 17:18:44.417 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:18:45.136 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:50.185 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:50.201 | INFO     | __main__:_upsert_yahoo_price:244 - COPPER 4.435500144958496
+2025-08-19 17:18:51.613 | INFO     | __main__:_upsert_yahoo_price:244 - GOLD_FUT 3359.10009765625
+2025-08-19 17:18:54.078 | INFO     | __main__:_upsert_yahoo_price:244 - HYG 80.37999725341797
+2025-08-19 17:18:55.235 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:18:55.453 | INFO     | __main__:_upsert_yahoo_price:244 - LQD 109.70999908447266
+2025-08-19 17:18:56.109 | INFO     | __main__:main:573 - CRYPTO F&G 56.0 (Greed)
+2025-08-19 17:18:56.115 | INFO     | __main__:main:748 - HYG_LQD_RATIO 0.7326588088978866
+2025-08-19 17:18:56.120 | INFO     | __main__:main:780 - COPPER_GOLD_RATIO 0.0013204429805629442
+2025-08-19 17:19:00.278 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:05.329 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:10.368 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:15.404 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:18.590 | INFO     | __main__:main:850 - ADV-DEC 9.0 (A:28 D:19 U:0)
+2025-08-19 17:19:19.544 | INFO     | __main__:main:894 - FNG_STOCKS 52.0 via https://edition.cnn.com/markets/fear-and-greed
+2025-08-19 17:19:20.438 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:25.473 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:30.519 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:33.548 | INFO     | __main__:main:337 - MOVE 82.1505
+2025-08-19 17:19:35.555 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:35.800 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:19:39.207 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:19:40.631 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:44.457 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:19:44.989 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:19:45.697 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:45.991 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:19:46.240 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:19:47.365 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:19:50.735 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:53.201 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:19:53.451 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:19:55.794 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:19:56.217 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:19:56.222 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:19:56.634 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:19:57.060 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:19:57.495 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:19:58.875 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:20:00.834 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:05.871 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:10.923 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:15.977 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:21.048 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:24.935 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:20:26.086 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:27.674 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:20:31.151 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:36.202 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:41.263 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:44.497 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:20:46.317 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:51.381 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:20:56.441 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:01.500 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:06.554 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:11.592 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:16.633 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:21.673 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:25.382 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:21:26.730 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:31.791 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:36.826 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:40.894 | INFO     | __main__:main:451 - DXY 98.28 (DX-Y.NYB)
+2025-08-19 17:21:41.881 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:44.533 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:21:46.988 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:52.050 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:21:57.119 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:02.171 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:07.230 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:12.281 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:17.367 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:22.439 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:26.080 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:22:27.487 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:30.430 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:22:32.545 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:37.584 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:42.623 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:44.565 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:22:47.704 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:52.750 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:22:57.824 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:02.876 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:07.945 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:13.013 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:18.105 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:23.180 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:28.254 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:29.355 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:23:30.502 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:23:33.345 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:38.419 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:43.555 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:44.632 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:23:48.664 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:53.755 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:23:58.843 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:03.910 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:08.970 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:14.023 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:19.070 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:24.143 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:25.554 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:24:27.608 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:24:29.202 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:30.228 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:24:32.795 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:24:33.289 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:24:33.542 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:24:33.778 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:24:34.240 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:36.969 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:24:36.981 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:24:38.954 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:24:39.292 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:39.363 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:24:39.777 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:24:41.110 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:24:44.333 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:44.669 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:24:45.204 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:24:47.578 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:24:49.394 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:54.458 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:24:59.534 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:04.580 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:09.682 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:14.753 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:19.840 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:24.952 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:30.118 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:35.230 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:40.299 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:44.716 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:25:45.392 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:45.764 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:25:46.929 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:25:50.476 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:25:55.523 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:00.589 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:05.663 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:10.766 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:15.833 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:20.921 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:25.994 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:31.059 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:36.140 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:41.221 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:44.770 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:26:46.291 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:51.399 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:26:56.480 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:01.565 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:05.093 | ERROR    | __main__:main:903 - Ciclo error: 'currentTradingPeriod'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 918, in <module>
+    main()
+> File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\scripts\run_external_to_macro.py", line 422, in main
+    q_vix_raw = get_vix_quote()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\src\sources\yahoo_source.py", line 47, in get_vix_quote
+    if info and getattr(info, "last_price", None) is not None:
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 251, in last_price
+    prices = self._get_1y_prices()
+  File "C:\Users\telmo\OneDrive\Escritorio\pro_trading\.venv\Lib\site-packages\yfinance\scrapers\quote.py", line 136, in _get_1y_prices
+    ctp = self._md["currentTradingPeriod"]
+KeyError: 'currentTradingPeriod'
+2025-08-19 17:27:06.645 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:11.689 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:11.952 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:27:13.125 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:27:16.740 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:21.787 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:26.856 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:31.912 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:36.969 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:42.035 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:44.800 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:27:47.099 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:52.151 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:27:57.196 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:02.235 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:07.313 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:12.359 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:13.050 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:28:17.415 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:19.608 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:28:22.472 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:27.558 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:32.597 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:37.660 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:42.716 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:44.843 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:28:47.784 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:52.834 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:28:57.900 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:02.949 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:08.020 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:13.059 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:13.659 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:29:14.781 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:29:18.102 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:23.144 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:26.323 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:29:27.784 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:29:28.186 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:28.563 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:29:31.222 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:29:31.688 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:29:31.951 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:29:32.189 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:29:33.239 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:34.930 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:29:34.960 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:29:35.398 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:29:35.841 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:29:36.262 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:29:36.711 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:29:38.282 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:43.323 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:44.873 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:29:48.382 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:53.425 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:29:58.468 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:03.504 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:08.555 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:13.632 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:13.807 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:30:14.954 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:30:18.680 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:23.723 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:28.760 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:33.795 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:38.864 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:43.932 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:44.934 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:30:48.982 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:54.028 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:30:59.094 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:04.176 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:09.253 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:14.358 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:15.590 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:31:16.740 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:31:19.447 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:24.500 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:29.549 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:34.627 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:39.704 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:44.763 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:44.980 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:31:49.822 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:54.874 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:31:59.924 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:05.061 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:10.131 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:15.187 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:15.878 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:32:16.996 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:32:20.254 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:25.385 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:30.492 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:35.553 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:40.714 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:45.015 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:32:45.798 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:50.868 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:32:55.932 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:00.994 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:06.080 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:11.173 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:16.248 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:20.649 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:33:21.315 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:23.740 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:33:26.392 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:31.468 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:36.552 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:41.624 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:45.064 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:33:45.153 | INFO     | __main__:main:397 - SKEW 153.1699981689453
+2025-08-19 17:33:46.748 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:47.573 | INFO     | __main__:_upsert_yahoo_price:244 - COPPER 4.432000160217285
+2025-08-19 17:33:50.272 | INFO     | __main__:_upsert_yahoo_price:244 - GOLD_FUT 3359.0
+2025-08-19 17:33:51.844 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:54.208 | INFO     | __main__:_upsert_yahoo_price:244 - HYG 80.37999725341797
+2025-08-19 17:33:56.929 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:33:57.959 | INFO     | __main__:_upsert_yahoo_price:244 - LQD 109.70999908447266
+2025-08-19 17:33:58.660 | INFO     | __main__:main:573 - CRYPTO F&G 56.0 (Greed)
+2025-08-19 17:33:58.668 | INFO     | __main__:main:748 - HYG_LQD_RATIO 0.7326588088978866
+2025-08-19 17:33:58.673 | INFO     | __main__:main:780 - COPPER_GOLD_RATIO 0.0013194403573138687
+2025-08-19 17:34:01.990 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:07.057 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:12.137 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:17.238 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:22.306 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:27.432 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:29.811 | INFO     | __main__:main:803 - BREADTH 200d 75.0% (33/44)
+2025-08-19 17:34:32.504 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:37.559 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:42.618 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:45.102 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:34:47.680 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:52.737 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:34:57.494 | INFO     | __main__:main:826 - BREADTH 50d 72.1% (31/43)
+2025-08-19 17:34:57.798 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:02.887 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:07.954 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:13.034 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:18.095 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:21.764 | INFO     | __main__:main:850 - ADV-DEC 11.0 (A:29 D:18 U:0)
+2025-08-19 17:35:22.888 | INFO     | __main__:main:894 - FNG_STOCKS 52.0 via https://edition.cnn.com/markets/fear-and-greed
+2025-08-19 17:35:23.232 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:26.594 | INFO     | __main__:main:337 - MOVE 82.15049743652344
+2025-08-19 17:35:27.464 | INFO     | __main__:main:352 - GVZ 14.819999694824219
+2025-08-19 17:35:28.296 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:28.345 | INFO     | __main__:main:367 - OVX 33.040000915527344
+2025-08-19 17:35:29.167 | INFO     | __main__:main:382 - VXN 19.389999389648438
+2025-08-19 17:35:30.090 | INFO     | __main__:_upsert_simple_fred:227 - UST2Y 3.77 (FRED:DGS2)
+2025-08-19 17:35:30.330 | INFO     | __main__:_upsert_simple_fred:227 - UST30Y 4.94 (FRED:DGS30)
+2025-08-19 17:35:31.208 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:35:32.119 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:35:32.388 | INFO     | __main__:main:505 - UST10Y 4.34% (stored=0.0434) FRED
+2025-08-19 17:35:33.355 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:35.205 | INFO     | __main__:main:678 - CALENDAR_BLOCK 0 | next=None
+2025-08-19 17:35:35.213 | INFO     | __main__:main:716 - SPREAD_2S10S -3.7266
+2025-08-19 17:35:35.735 | INFO     | __main__:main:873 - RELVOL_SPY_20D 0.89 (vol 62389103 / avg20 69981440)
+2025-08-19 17:35:36.238 | INFO     | __main__:main:873 - RELVOL_QQQ_20D 1.19 (vol 52230088 / avg20 43942109)
+2025-08-19 17:35:36.773 | INFO     | __main__:main:873 - RELVOL_HYG_20D 0.66 (vol 20987401 / avg20 31951215)
+2025-08-19 17:35:37.231 | INFO     | __main__:main:873 - RELVOL_LQD_20D 1.03 (vol 26744238 / avg20 25956362)
+2025-08-19 17:35:38.434 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:43.492 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:45.134 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:35:48.575 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:53.626 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:35:58.669 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:03.707 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:08.752 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:13.841 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:18.882 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:23.921 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:26.200 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:36:27.237 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:36:28.985 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:34.086 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:39.208 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:44.280 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:45.178 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:36:49.358 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:54.537 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:36:59.700 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:04.800 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:10.025 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:15.368 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:20.507 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:25.713 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:26.368 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:37:27.279 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:37:31.021 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:36.219 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:41.293 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:45.254 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:37:46.486 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:51.573 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:37:56.696 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:01.791 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:06.898 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:11.982 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:17.047 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:22.206 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:26.393 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:38:27.281 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:27.334 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:38:32.375 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:37.494 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:42.639 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:45.301 | DEBUG    | __main__:main:154 - OK (sin alertas).
+2025-08-19 17:38:47.746 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:52.872 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:38:58.168 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:03.427 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:08.658 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:13.740 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:18.881 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:24.011 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:26.469 | INFO     | __main__:main:433 - VIX 15.569999694824219
+2025-08-19 17:39:27.468 | INFO     | __main__:main:451 - DXY 98.27999877929688 (DX-Y.NYB)
+2025-08-19 17:39:29.144 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:34.235 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
+2025-08-19 17:39:39.306 | INFO     | __main__:job:146 - MT5 cycle: features=6 inserted=6 skipped=0
