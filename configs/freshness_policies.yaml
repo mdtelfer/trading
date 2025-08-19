@@ -1,0 +1,65 @@
+defaults:
+  feature_threshold_sec: 1800 # 30 min por defecto (intraday “lento”)
+  suppress_minutes: 30
+  evaluator_fast_threshold_sec: 1200 # 20 min
+  evaluator_slow_threshold_sec: 14400 # 4 h
+
+tiers:
+  fast: 1200
+  slow: 14400
+  fused: 14400
+
+features:
+  # --- intradía continuo (crypto)
+  BTCUSD: 900 # 15 min
+  ETHUSD: 900
+  XAUUSD: 1200 # 20 min (depende feed)
+  XAGUSD: 1200
+  USOUSD: 1800
+  BRENT: 1800
+
+  # --- ETFs/índices por yfinance (durante RTH suelen ser 1-10m; fuera de horario se estancan)
+  DXY: 3600 # 1 h
+  VIX: 3600
+  VXN: 3600
+  HYG: 3600
+  LQD: 3600
+  MOVE: 7200 # 2 h (publicaciones no tan frecuentes)
+  SKEW: 86400 # suele ser EOD
+  GVZ: 3600
+  OVX: 3600
+  GOLD_FUT: 3600
+  COPPER: 3600
+
+  # --- derivados locales (calculados a partir de otros)
+  HYG_LQD_RATIO: 3600
+  COPPER_GOLD_RATIO: 3600
+  SPREAD_2S10S: 7200
+  RELVOL_SPY_20D: 86400
+  RELVOL_QQQ_20D: 86400
+  RELVOL_HYG_20D: 86400
+  RELVOL_LQD_20D: 86400
+
+  # --- breadth y sentiment (suelen ser diarios / EOD)
+  BREADTH_SPX_ADV_DEC: 86400
+  BREADTH_SPX_PCT_ABOVE_50D: 86400
+  BREADTH_SPX_PCT_ABOVE_200D: 86400
+  FNG_STOCKS: 86400 # CNN Fear & Greed
+  FEAR_GREED_CRYPTO: 86400
+
+  # --- calendario / bloques de noticias
+  CALENDAR_BLOCK: 86400
+
+  # --- FRED / tasas (1 vez al día o menos, según serie)
+  UST2Y: 86400
+  UST10Y: 86400
+  UST30Y: 86400
+  T10YIE: 86400
+  REAL10Y: 86400
+  SOFR: 86400
+  ON_RRP: 86400
+  NFCI: 86400
+  DAAA: 86400
+  DBAA: 86400
+  CREDIT_SPREAD_HY: 86400
+  CREDIT_SPREAD_IG: 86400

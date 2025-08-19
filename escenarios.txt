@@ -1,0 +1,41 @@
+Macroeconómicos:
+
+    Crecimiento alto + inflación alta.
+
+    Crecimiento alto + inflación baja (Goldilocks).
+
+    Crecimiento bajo + inflación alta (Estanflación).
+
+    Crecimiento bajo + inflación baja (Recesión deflacionaria).
+
+Política Monetaria:
+
+    Ciclo de subida de tasas.
+
+    Ciclo de recorte de tasas.
+
+    Pivot monetario (cambio de tendencia).
+
+Sentimiento/Riesgo:
+
+    Risk-on (apetito por riesgo).
+
+    Risk-off (aversión al riesgo).
+
+    Refugio extremo (ej. pánico bancario).
+
+Liquidez/Mercados:
+
+    Liquidez abundante (QE, easy money).
+
+    Liquidez escasa (Quantitative Tightening).
+
+    Crisis de liquidez intradía (flash crashes).
+
+Crisis/Shocks:
+
+    Crisis de bonos soberanos (ej. spreads de deuda).
+
+    Shock de commodities (oferta/demanda).
+
+    Rotación sectorial (ej. de tech a value).

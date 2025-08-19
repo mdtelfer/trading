@@ -1,0 +1,26 @@
+# --- Linters / Formatters ---
+black==24.8.0
+ruff==0.6.9
+
+# --- Type checker ---
+mypy==1.11.2
+types-psutil
+types-requests
+types-PyYAML
+types-setuptools
+types-python-dateutil
+types-pytz
+types-redis
+types-six
+types-toml
+types-psycopg2
+types-beautifulsoup4
+
+# --- Testing ---
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx[cli]==0.27.0
+
+# --- Jupyter / Notebooks (opcional) ---
+jupyterlab==4.2.5
+ipykernel==6.29.5

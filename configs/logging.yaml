@@ -1,0 +1,7 @@
+app_name: pro_trader
+level: INFO
+json_logs: true
+rotation: "1 day"
+retention: "30 days"
+compression: "gz"
+log_dir: "./logs"

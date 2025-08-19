@@ -1,0 +1,333 @@
+meta:
+  version: 1
+  tz: America/Guayaquil
+  notes: >
+    Motor macro long-only (intradía). Evalúa en orden:
+    hard_blocks -> risk_bands -> scenarios -> overrides -> priority_overrides.
+    Unidades: UST* y REAL10Y en "%", T10YIE en "%", spreads en "%", índices 0-100 si aplica.
+
+portfolio:
+  groups:
+    CORE:
+      {
+        risk_mult: 1.0,
+        symbols:
+          [
+            EURUSD,
+            USDJPY,
+            GBPUSD,
+            SPX500,
+            NDX100,
+            US30,
+            XAUUSD,
+            XAGUSD,
+            USOUSD,
+            BTCUSD,
+          ],
+      }
+    EXTENSION:
+      { risk_mult: 0.5, symbols: [GBPJPY, GER30, JP225, ETHUSD, USDCAD] }
+    GREED:
+      { risk_mult: 0.25, symbols: [DOGUSD, ADAUSD, XRPUSD, LTCUSD, XMRUSD] }
+  safe_havens: [XAUUSD, USDJPY, DXY]
+
+evaluation:
+  block_is_terminal: true
+  min_true_per_scenario: 1
+  confirm_window_min: 0
+
+hard_blocks:
+  - name: "calendar_lock"
+    any:
+      - { feature: CALENDAR_BLOCK, op: "==", value: 1 }
+    effect:
+      block_new_entries: true
+      reason: "High-impact event window"
+
+  - name: "panic_vol_credit"
+    all:
+      - { feature: VIX, op: ">", value: 30 }
+      - { feature: MOVE, op: ">", value: 120 }
+      - { feature: CREDIT_SPREAD_HY, op: ">", value: 5.0 }
+    effect:
+      block_new_entries_excluding: [XAUUSD, USDJPY]
+      cap_groups_to: [CORE]
+      risk_multiplier_macro: 0.25
+      reason: "Vol alta + stress crédito"
+
+risk_bands:
+  - name: "ultra_calm"
+    all:
+      - { feature: VIX, op: "<", value: 15 }
+      - { feature: MOVE, op: "<", value: 80 }
+      - { feature: CREDIT_SPREAD_HY, op: "<=", value: 3.5 }
+    effect: { risk_multiplier_macro: 1.0 }
+
+  - name: "normal"
+    all:
+      - { feature: VIX, op: "<=", value: 20 }
+      - { feature: MOVE, op: "<=", value: 90 }
+    effect: { risk_multiplier_macro: 0.8 }
+
+  - name: "cautious"
+    any:
+      - { feature: VIX, op: ">", value: 20 }
+      - { feature: MOVE, op: ">", value: 90 }
+      - { feature: NFCI, op: ">", value: 0.0 }
+      - { feature: CREDIT_SPREAD_HY, op: ">", value: 4.0 }
+    effect: { risk_multiplier_macro: 0.5 }
+
+  - name: "stress"
+    any:
+      - { feature: VIX, op: ">", value: 25 }
+      - { feature: MOVE, op: ">", value: 100 }
+      - { feature: CREDIT_SPREAD_HY, op: ">", value: 4.5 }
+    effect: { risk_multiplier_macro: 0.25 }
+
+scenarios:
+  # --- RIESGO / CRECIMIENTO ---
+  - name: "goldilocks_risk_on"
+    all:
+      - { feature: VIX, op: "<", value: 16 }
+      - { feature: MOVE, op: "<", value: 85 }
+      - { feature: HYG_LQD_RATIO, op: ">", value: 0.75 }
+      - { feature: CREDIT_SPREAD_IG, op: "<", value: 1.5 }
+    any:
+      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 55 }
+      - { feature: SKEW, op: ">=", value: 130 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE, EXTENSION, GREED]
+      prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
+      risk_multiplier_macro: 1.0
+
+  - name: "breadth_risk_on_confirmed"
+    all:
+      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 60 }
+      - { feature: BREADTH_SPX_ADV_DEC, op: ">", value: 0 }
+      - { feature: RELVOL_QQQ_20D, op: ">", value: 1.20 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE, EXTENSION, GREED]
+      prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
+      risk_multiplier_macro: 0.9
+
+  - name: "risk_off_defensive"
+    any:
+      - { feature: VIX, op: ">", value: 25 }
+      - { feature: MOVE, op: ">", value: 100 }
+      - { feature: CREDIT_SPREAD_HY, op: ">", value: 4.5 }
+      - { feature: BREADTH_SPX_ADV_DEC, op: "<", value: 0 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE]
+      prioritize_symbols: [XAUUSD, USDJPY, DXY]
+      avoid_symbols: [BTCUSD, ETHUSD, NDX100]
+      group_caps: { CORE: { max_open_positions: 2 } }
+      risk_multiplier_macro: 0.5
+
+  - name: "extreme_safe_haven"
+    all:
+      - { feature: VIX, op: ">", value: 35 }
+      - { feature: MOVE, op: ">", value: 140 }
+    any:
+      - { feature: NFCI, op: ">", value: 0.5 }
+      - { feature: CREDIT_SPREAD_HY, op: ">", value: 6.0 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE]
+      prioritize_symbols: [XAUUSD, USDJPY]
+      risk_multiplier_macro: 0.25
+    confirmations:
+      - { feature: REAL10Y, op: "<", value: 0.0 }
+
+  # --- USD Y CURVA ---
+  - name: "usd_strong"
+    all:
+      - { feature: DXY, op: ">", value: 100 }
+      - { feature: SPREAD_2S10S, op: "<", value: 0.0 }
+      - { feature: UST10Y, op: ">", value: 0.0 } # (refuerza sesgo de tasas absolutas)
+    effect:
+      allowed_groups: [CORE, EXTENSION]
+      prioritize_symbols: [USDJPY, USDCAD]
+      avoid_symbols: [XAGUSD, BTCUSD, ETHUSD]
+
+  # --- INFLACIÓN / COMMODITIES ---
+  - name: "inflation_impulse"
+    all:
+      - { feature: T10YIE, op: ">", value: 2.4 }
+      - { feature: REAL10Y, op: "<=", value: 1.5 }
+    any:
+      - { feature: BREADTH_SPX_PCT_ABOVE_200D, op: ">", value: 40 } # confirmación macro suave
+    effect:
+      allowed_groups: [CORE, EXTENSION]
+      prioritize_symbols: [XAUUSD, XAGUSD, USOUSD, BRENT, COPPER]
+
+  - name: "commodities_shock"
+    all:
+      - { feature: OVX, op: ">", value: 40 }
+      - { feature: COPPER_GOLD_RATIO, op: ">", value: 0.90 }
+    any:
+      - { feature: USOUSD, op: ">", value: 80 }
+      - { feature: BRENT, op: ">", value: 85 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE, EXTENSION]
+      prioritize_symbols: [USOUSD, BRENT, COPPER, XAUUSD]
+
+  # --- CRIPTO ---
+  - name: "crypto_greenlight"
+    all:
+      - { feature: VIX, op: "<", value: 18 }
+      - { feature: MOVE, op: "<", value: 90 }
+      - { feature: HYG_LQD_RATIO, op: ">", value: 0.74 }
+      - { feature: FEAR_GREED_CRYPTO, op: ">=", value: 55 }
+    effect:
+      allowed_groups: [CORE, EXTENSION, GREED]
+      prioritize_symbols: [BTCUSD, ETHUSD]
+      risk_multiplier_macro: 1.0
+
+  - name: "crypto_altseason_lite"
+    all:
+      - { feature: FEAR_GREED_CRYPTO, op: ">", value: 70 }
+      - { feature: VIX, op: "<", value: 18 }
+      - { feature: RELVOL_QQQ_20D, op: ">", value: 1.20 }
+    any:
+      - { feature: FNG_STOCKS, op: ">", value: 60 }
+      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 55 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [GREED]
+      prioritize_symbols: [BTCUSD, ETHUSD]
+
+  # --- LIQUIDEZ / AMPLITUD DEFENSIVA ---
+  - name: "breadth_risk_off_liquidity"
+    all:
+      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: "<", value: 30 }
+      - { feature: RELVOL_SPY_20D, op: "<", value: 0.80 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE]
+      prioritize_symbols: [XAUUSD, USDJPY, DXY]
+      avoid_symbols: [BTCUSD, ETHUSD, NDX100]
+      group_caps: { CORE: { max_open_positions: 2 } }
+      risk_multiplier_macro: 0.5
+
+priority_overrides:
+  - name: "usd_vs_gold_preference"
+    if_all:
+      - { feature: DXY, op: ">", value: 102 }
+      - { feature: VIX, op: ">", value: 20 }
+    then:
+      prioritize_first: [USDJPY]
+      de_emphasize: [XAUUSD]
+
+  - name: "gold_over_usdjpy_when_usd_soft"
+    if_all:
+      - { feature: DXY, op: "<", value: 100 }
+      - { feature: MOVE, op: ">", value: 90 }
+    then:
+      prioritize_first: [XAUUSD]
+      de_emphasize: [USDJPY]
+
+symbol_overrides:
+  XAUUSD:
+    { max_daily_trades: 3, max_concurrent_positions: 1, risk_cap_mult: 1.2 }
+  BTCUSD:
+    { max_daily_trades: 2, max_concurrent_positions: 1, risk_cap_mult: 0.8 }
+  ETHUSD: { max_daily_trades: 2, risk_cap_mult: 0.8 }
+  NDX100: { max_daily_trades: 2 }
+  USDJPY: { max_daily_trades: 3 }
+
+cooldowns:
+  after_stopout_min: 15
+  after_big_move: { threshold_pct: 1.0, cooldown_min: 10 }
+
+kill_switch:
+  daily_dd_pct: 2.0
+  weekly_dd_pct: 5.0
+  monthly_dd_pct: 10.0
+
+units:
+  # Índices de volatilidad / riesgo
+  VIX: index
+  MOVE: index
+  GVZ: index
+  OVX: index
+  VXN: index
+  SKEW: index
+
+  # Crédito / tasas / inflación
+  CREDIT_SPREAD_HY: pct
+  CREDIT_SPREAD_IG: pct
+  UST10Y: pct
+  UST2Y: pct
+  UST30Y: pct
+  REAL10Y: pct
+  T10YIE: pct
+  SPREAD_2S10S: pct
+  SOFR: pct
+  ON_RRP: level
+  NFCI: level
+  DAAA: level
+  DBAA: level
+
+  # FX / commodities / ETFs
+  DXY: index
+  BRENT: price
+  USOUSD: price
+  XAUUSD: price
+  XAGUSD: price
+  BTCUSD: price
+  ETHUSD: price
+  COPPER: price
+  GOLD_FUT: price
+  HYG: price
+  LQD: price
+
+  # Derivados / breadth / volumen relativo
+  HYG_LQD_RATIO: ratio
+  COPPER_GOLD_RATIO: ratio
+  BREADTH_SPX_ADV_DEC: breadth_net
+  BREADTH_SPX_PCT_ABOVE_200D: percent
+  BREADTH_SPX_PCT_ABOVE_50D: percent
+  RELVOL_SPY_20D: ratio
+  RELVOL_QQQ_20D: ratio
+  RELVOL_HYG_20D: ratio
+  RELVOL_LQD_20D: ratio
+
+  # Otros
+  FEAR_GREED_CRYPTO: index_0_100
+  FNG_STOCKS: index_0_100
+  CALENDAR_BLOCK: flag
+
+schedules:
+  fast:
+    { every_min: 5, confirm_reads: 2, sticky_up_min: 15, sticky_down_min: 0 }
+  slow:
+    { every_min: 60, confirm_reads: 2, sticky_up_min: 60, sticky_down_min: 0 }
+
+fuse:
+  allow_logic: fast_and_slow
+  risk_logic: min
+  prioritize_logic: intersection
+  avoid_logic: union
+  groups_logic: intersection
+
+feature_sets:
+  fast:
+    - VIX; MOVE; GVZ; OVX; VXN; SKEW
+    - DXY
+    - BRENT; USOUSD; XAUUSD; XAGUSD; BTCUSD; ETHUSD
+    - COPPER; GOLD_FUT
+    - HYG; LQD
+    - FNG_STOCKS; FEAR_GREED_CRYPTO
+    - HYG_LQD_RATIO; COPPER_GOLD_RATIO; SPREAD_2S10S
+    - BREADTH_SPX_PCT_ABOVE_50D; BREADTH_SPX_PCT_ABOVE_200D
+    - RELVOL_SPY_20D; RELVOL_QQQ_20D; RELVOL_HYG_20D; RELVOL_LQD_20D
+  slow:
+    - NFCI; SOFR; ON_RRP
+    - DAAA; DBAA
+    - UST2Y; UST10Y; UST30Y
+    - REAL10Y; T10YIE
+    - CREDIT_SPREAD_IG; CREDIT_SPREAD_HY

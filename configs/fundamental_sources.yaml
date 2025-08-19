@@ -1,0 +1,331 @@
+meta:
+  generated_at: "2025-08-17T16:41:58.628971"
+  timezone: America/Guayaquil
+  notes: Fundamental sources configuration (Phase 1 – Free). MT5 preferred when available.
+
+layers:
+  macro:
+    # --- Breadth SPX ---
+    BREADTH_SPX_PCT_ABOVE_200D: { primary: { source: Derived, depends_on: ["SPX_CONSTITS"] } }
+    BREADTH_SPX_PCT_ABOVE_50D:  { primary: { source: Derived, depends_on: ["SPX_CONSTITS"] } }
+    BREADTH_SPX_ADV_DEC:        { primary: { source: Derived, depends_on: ["SPX_CONSTITS"] } }
+
+    # Fuente de constituyentes (archivo local mantenible)
+    SPX_CONSTITS:               { primary: { source: LocalFile, path: "configs/spx_constituents.csv" } }
+
+    # --- ETF “flows-lite” (proxies gratis) ---
+    RELVOL_SPY_20D:             { primary: { source: YahooFinance, symbol: "SPY" } }
+    RELVOL_QQQ_20D:             { primary: { source: YahooFinance, symbol: "QQQ" } }
+    RELVOL_HYG_20D:             { primary: { source: YahooFinance, symbol: "HYG" } }
+    RELVOL_LQD_20D:             { primary: { source: YahooFinance, symbol: "LQD" } }
+
+    MOVE:
+      primary: { source: YahooFinance, symbol: "^MOVE" }
+    GVZ:
+      primary: { source: YahooFinance, symbol: "^GVZ" }
+    OVX:
+      primary: { source: YahooFinance, symbol: "^OVX" }
+    VXN:
+      primary: { source: YahooFinance, symbol: "^VXN" }
+    SKEW:
+      primary: { source: YahooFinance, symbol: "^SKEW" }
+
+    # Curva / inflación
+    UST2Y: { primary: { source: FRED, series: "DGS2" } }
+    UST30Y: { primary: { source: FRED, series: "DGS30" } }
+    T10YIE: { primary: { source: FRED, series: "T10YIE" } } # 10y breakeven
+    REAL10Y: { primary: { source: FRED, series: "DFII10" } } # 10y real
+
+    # Liquidez / condiciones financieras
+    NFCI: { primary: { source: FRED, series: "NFCI" } } # semanal
+    SOFR: { primary: { source: FRED, series: "SOFR" } } # overnight
+    ON_RRP: { primary: { source: FRED, series: "RRPONTSYD" } } # ON RRP total
+
+    # Crédito
+    DBAA: { primary: { source: FRED, series: "DBAA" } } # Moody's BAA yield
+    DAAA: { primary: { source: FRED, series: "DAAA" } } # Moody's AAA yield
+
+    # Commodities / ciclo
+    COPPER: { primary: { source: YahooFinance, symbol: "HG=F" } }
+    GOLD_FUT: { primary: { source: YahooFinance, symbol: "GC=F" } }
+    HYG: { primary: { source: YahooFinance, symbol: "HYG" } }
+    LQD: { primary: { source: YahooFinance, symbol: "LQD" } }
+
+    # Derivados (calculados)
+    SPREAD_2S10S:
+      { primary: { source: Derived, depends_on: ["UST10Y", "UST2Y"] } }
+    HYG_LQD_RATIO: { primary: { source: Derived, depends_on: ["HYG", "LQD"] } }
+    COPPER_GOLD_RATIO:
+      { primary: { source: Derived, depends_on: ["COPPER", "GOLD_FUT"] } }
+
+    VIX:
+      primary:
+        type: api
+        source: YahooFinance
+        symbol: "^VIX"
+      secondary:
+        type: scrape
+        source: CBOE_VIX_CSV
+        endpoint: "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_60s
+      notes: "Using Yahoo Finance ^VIX (intraday/delayed). Secondary: official CBOE daily CSV."
+
+    UST10Y:
+      primary:
+        type: api
+        source: FRED
+        series: DGS10
+      secondary:
+        type: scrape
+        source: Investing_US10Y
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@08:05
+      notes: Official 10Y yield from FRED (daily). (MT5 not available per user mapping).
+
+    DXY:
+      primary:
+        type: api
+        source: YahooFinance
+        symbol: "DX-Y.NYB" # o "DX-Y.NYB" si ya lo viste así
+      secondary:
+        type: scrape
+        source: Investing_DXY
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_60s
+      notes: "Using Yahoo Finance Dollar Index."
+
+    USOIL:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: USOUSD
+      secondary:
+        type: api
+        source: YahooFinance
+        symbol: CL=F
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_5s
+      notes: Using MT5 realtime for USOIL (USOUSD).
+    BRENT:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: UKOUSD
+      secondary:
+        type: api
+        source: YahooFinance
+        symbol: BZ=F
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_5s
+      notes: Using MT5 realtime for BRENT (UKOUSD).
+    XAUUSD:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: XAUUSD
+      secondary:
+        type: api
+        source: YahooFinance
+        symbol: XAUUSD=X
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_5s
+      notes: Using MT5 realtime for XAUUSD (XAUUSD).
+    XAGUSD:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: XAGUSD
+      secondary:
+        type: api
+        source: YahooFinance
+        symbol: XAGUSD=X
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_5s
+      notes: Using MT5 realtime for XAGUSD (XAGUSD).
+    WALCL:
+      primary:
+        type: api
+        source: FRED
+        series: WALCL
+      secondary:
+        type: scrape
+        source: FED_H41_PDF
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: weekly@Friday_17:00ET
+      notes: Fed balance sheet (H.4.1), series WALCL.
+
+  sentiment:
+    FEAR_GREED_EQUITY:
+      primary:
+        type: scrape
+        source: CNN_FearGreed
+      secondary:
+        type: manual
+        source: DashboardInput
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@08:15
+      notes: CNN index; scraping required.
+    FEAR_GREED_CRYPTO:
+      primary:
+        type: api
+        source: AlternativeMe
+        endpoint: https://api.alternative.me/fng/?limit=1
+      secondary:
+        type: manual
+        source: DashboardInput
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@08:15
+      notes: Crypto Fear & Greed JSON.
+    COT:
+      primary:
+        type: scrape
+        source: CFTC
+        endpoint: https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm
+      secondary:
+        type: api
+        source: Quandl_free
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: weekly@Saturday_08:00
+      notes: Weekly COT report; parse CSV/ZIP.
+    ETF_FLOWS:
+      primary:
+        type: scrape
+        source: ETFdb_or_ETF.com
+      secondary:
+        type: api
+        source: YahooFinance_proxy
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@18:00
+      notes: Use flows for SPY/QQQ/GLD; proxies via turnover if needed.
+    BTCUSD:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: BTCUSD
+      secondary:
+        type: api
+        source: Binance
+        symbol: BTCUSDT
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_2s
+      notes: Using MT5 realtime for BTCUSD (BTCUSD).
+    ETHUSD:
+      primary:
+        type: mt5
+        source: MT5
+        symbol: ETHUSD
+      secondary:
+        type: api
+        source: Binance
+        symbol: ETHUSDT
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_2s
+      notes: Using MT5 realtime for ETHUSD (ETHUSD).
+  micro:
+    CALENDAR:
+      primary:
+        type: api
+        source: ForexFactory_JSON
+        endpoint: https://cdn-nfs.faireconomy.media/ff_calendar_thisweek.json
+      secondary:
+        type: scrape
+        source: Investing_Calendar
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: every_30min
+      notes: Use for news_block and event windows.
+    EARNINGS_TOP:
+      primary:
+        type: scrape
+        source: Nasdaq_Earnings_Calendar
+      secondary:
+        type: api
+        source: EOD_Historical_free
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@07:00_and_16:10
+      notes: Track top-quintile impact tickers for SPX/NDX.
+    PCR:
+      primary:
+        type: scrape
+        source: CBOE_PCR_CSV
+        endpoint: https://cdn.cboe.com/api/global/delayed_quotes/option_ratios.csv
+      secondary:
+        type: api
+        source: Yahoo_proxy
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@18:30
+      notes: Total/Equity/Index PCR.
+    BREADTH_SPX:
+      primary:
+        type: api
+        source: FRED_or_NYSE
+        series: Advance/Decline
+      secondary:
+        type: scrape
+        source: StockCharts
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@18:10
+      notes: Compute %SPX>200DMA via constituent data (Phase 2).
+    CREDIT_SPREAD_HY:
+      primary:
+        type: api
+        source: FRED
+        series: BAMLH0A0HYM2
+      secondary:
+        type: api
+        source: FRED
+        series: BAMLC0A0CM
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: daily@18:20
+      notes: HY OAS vs IG OAS.
+    GPR:
+      primary:
+        type: api
+        source: PolicyUncertainty_GPR_CSV
+        endpoint: http://www.policyuncertainty.com/media/GPR_Global.csv
+      secondary:
+        type: manual
+        source: DashboardInput
+      fallback:
+        type: manual
+        source: DashboardInput
+      schedule: monthly@1st_09:00
+      notes: Global Geopolitical Risk Index (monthly).

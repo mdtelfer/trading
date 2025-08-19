@@ -1,0 +1,45 @@
+{
+  // --- Python & venv ---
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+  "python.envFile": "${workspaceFolder}\\.env",
+
+  // --- Formato y lint ---
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.ruff": "explicit",
+    "source.fixAll.ruff": "explicit"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // --- Black & Ruff coherentes ---
+  "black-formatter.args": ["--line-length", "100"],
+  "ruff.lint.enable": true,
+  "ruff.lint.select": [
+    "E","F","W",      // pycodestyle/pyflakes
+    "I",              // isort (orden de imports)
+    "UP",             // pyupgrade
+    "B",              // bugbear
+    "C90",            // mccabe (complejidad)
+    "SIM"             // simplify
+  ],
+  "ruff.format.preview": true,
+  "ruff.lint.preview": true,
+
+  // --- Pylance (type checking suave en editor) ---
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true,
+
+  // --- YAML (útil para tus .yaml de fuentes) ---
+  "yaml.validate": true,
+
+  // --- ErrorLens: errores visibles en línea ---
+  "errorLens.enabled": true,
+
+  // --- Misc ---
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}

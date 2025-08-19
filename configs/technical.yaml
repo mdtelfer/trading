@@ -1,0 +1,28 @@
+timezone: America/Guayaquil
+
+timeframes: [M5, M15]
+
+sessions:
+  london: { start: "03:00", end: "07:00" }
+  newyork: { start: "08:30", end: "11:30" }
+
+debounce_bars: 3
+
+strategies:
+  breakout_retest:
+    lookback: 50
+    atr_len: 14
+    buffer_atr: 0.2
+  mean_reversion:
+    ema_len: 50
+    rsi_len: 14
+    rsi_buy: 35
+  session_momentum:
+    ema_fast: 20
+    ema_slow: 50
+
+# Portafolio (puedes moverlo a otro yaml si prefieres)
+symbols:
+  core: [XAUUSD, EURUSD, NDX100]
+  extension: [GBPJPY, GER30]
+  greed: [BTCUSD, ETHUSD]

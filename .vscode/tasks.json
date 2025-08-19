@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ruff:lint+fix",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\python.exe -m ruff check --fix .",
+      "problemMatcher": []
+    },
+    {
+      "label": "mypy",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\python.exe -m mypy .",
+      "problemMatcher": []
+    },
+    {
+      "label": "uvicorn (run)",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --env-file .env",
+      "problemMatcher": []
+    }
+  ]
+}

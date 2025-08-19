@@ -1,0 +1,7 @@
+{
+    "typeCheckingMode": "basic",
+    "stubPath": "typings",
+    "reportMissingTypeStubs": "none",
+    "reportUnknownMemberType": "warning",
+    "reportAttributeAccessIssue": "warning"
+}
