@@ -85,34 +85,32 @@ risk_bands:
     effect: { risk_multiplier_macro: 0.25 }
 
 scenarios:
-  # --- RIESGO / CRECIMIENTO ---
-  - name: "goldilocks_risk_on"
-    all:
+  - name: goldilocks_risk_on
+    any:
       - { feature: VIX, op: "<", value: 16 }
       - { feature: MOVE, op: "<", value: 85 }
       - { feature: HYG_LQD_RATIO, op: ">", value: 0.75 }
       - { feature: CREDIT_SPREAD_IG, op: "<", value: 1.5 }
-    any:
-      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 55 }
-      - { feature: SKEW, op: ">=", value: 130 }
+    min_true: 3
     effect:
       allow_new_entries: true
       allowed_groups: [CORE, EXTENSION, GREED]
       prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
       risk_multiplier_macro: 1.0
 
-  - name: "breadth_risk_on_confirmed"
-    all:
+  - name: breadth_risk_on_confirmed
+    any:
       - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 60 }
+      - { feature: BREADTH_SPX_PCT_ABOVE_200D, op: ">", value: 50 }
       - { feature: BREADTH_SPX_ADV_DEC, op: ">", value: 0 }
-      - { feature: RELVOL_QQQ_20D, op: ">", value: 1.20 }
+    min_true: 2
     effect:
       allow_new_entries: true
       allowed_groups: [CORE, EXTENSION, GREED]
       prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
       risk_multiplier_macro: 0.9
 
-  - name: "risk_off_defensive"
+  - name: risk_off_defensive
     any:
       - { feature: VIX, op: ">", value: 25 }
       - { feature: MOVE, op: ">", value: 100 }
@@ -123,82 +121,87 @@ scenarios:
       allowed_groups: [CORE]
       prioritize_symbols: [XAUUSD, USDJPY, DXY]
       avoid_symbols: [BTCUSD, ETHUSD, NDX100]
-      group_caps: { CORE: { max_open_positions: 2 } }
+      group_caps:
+        CORE:
+          max_open_positions: 2
       risk_multiplier_macro: 0.5
 
-  - name: "extreme_safe_haven"
+  - name: extreme_safe_haven
     all:
       - { feature: VIX, op: ">", value: 35 }
-      - { feature: MOVE, op: ">", value: 140 }
-    any:
-      - { feature: NFCI, op: ">", value: 0.5 }
-      - { feature: CREDIT_SPREAD_HY, op: ">", value: 6.0 }
+      - { feature: MOVE, op: ">", value: 120 }
+    confirmations:
+      - { feature: REAL10Y, op: "<", value: 0.0 }
     effect:
       allow_new_entries: true
       allowed_groups: [CORE]
-      prioritize_symbols: [XAUUSD, USDJPY]
-      risk_multiplier_macro: 0.25
-    confirmations:
-      - { feature: REAL10Y, op: "<", value: 0.0 }
+      prioritize_symbols: [XAUUSD, USDJPY, DXY]
+      avoid_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
+      risk_multiplier_macro: 0.5
 
-  # --- USD Y CURVA ---
-  - name: "usd_strong"
-    all:
-      - { feature: DXY, op: ">", value: 100 }
-      - { feature: SPREAD_2S10S, op: "<", value: 0.0 }
-      - { feature: UST10Y, op: ">", value: 0.0 } # (refuerza sesgo de tasas absolutas)
-    effect:
-      allowed_groups: [CORE, EXTENSION]
-      prioritize_symbols: [USDJPY, USDCAD]
-      avoid_symbols: [XAGUSD, BTCUSD, ETHUSD]
-
-  # --- INFLACIÓN / COMMODITIES ---
-  - name: "inflation_impulse"
-    all:
-      - { feature: T10YIE, op: ">", value: 2.4 }
-      - { feature: REAL10Y, op: "<=", value: 1.5 }
+  - name: usd_strong
     any:
-      - { feature: BREADTH_SPX_PCT_ABOVE_200D, op: ">", value: 40 } # confirmación macro suave
-    effect:
-      allowed_groups: [CORE, EXTENSION]
-      prioritize_symbols: [XAUUSD, XAGUSD, USOUSD, BRENT, COPPER]
-
-  - name: "commodities_shock"
-    all:
-      - { feature: OVX, op: ">", value: 40 }
-      - { feature: COPPER_GOLD_RATIO, op: ">", value: 0.90 }
-    any:
-      - { feature: USOUSD, op: ">", value: 80 }
-      - { feature: BRENT, op: ">", value: 85 }
+      - { feature: DXY, op: ">", value: 103 }
+      - { feature: UST2Y, op: ">", value: 4.5 }
+      - { feature: SOFR, op: ">=", value: 5.0 }
+    min_true: 2
     effect:
       allow_new_entries: true
       allowed_groups: [CORE, EXTENSION]
-      prioritize_symbols: [USOUSD, BRENT, COPPER, XAUUSD]
+      prioritize_symbols: [USDJPY, DXY]
+      avoid_symbols: [XAGUSD, BTCUSD, ETHUSD]
 
-  # --- CRIPTO ---
-  - name: "crypto_greenlight"
+  - name: inflation_impulse
     all:
-      - { feature: VIX, op: "<", value: 18 }
-      - { feature: MOVE, op: "<", value: 90 }
-      - { feature: HYG_LQD_RATIO, op: ">", value: 0.74 }
-      - { feature: FEAR_GREED_CRYPTO, op: ">=", value: 55 }
+      - { feature: T10YIE, op: ">", value: 2.4 }
+      - { feature: REAL10Y, op: ">", value: 1.8 }
     effect:
-      allowed_groups: [CORE, EXTENSION, GREED]
+      allow_new_entries: true
+      allowed_groups: [CORE, EXTENSION]
+      prioritize_symbols: [XAUUSD, XAGUSD, USOIL, BRENT, COPPER]
+
+  - name: commodities_shock
+    all:
+      - { feature: OVX, op: ">", value: 50 }
+      - { feature: USOIL, op: ">", value: 100 }
+    effect:
+      allow_new_entries: true
+      allowed_groups: [CORE, EXTENSION]
+      prioritize_symbols: [USOIL, BRENT, COPPER, XAUUSD]
+
+  - name: crypto_greenlight
+    any:
+      - { feature: VIX, op: "<", value: 18 }
+      - { feature: MOVE, op: "<", value: 100 }
+      - { feature: CREDIT_SPREAD_IG, op: "<", value: 1.5 }
+      - { feature: DXY, op: "<", value: 103 }
+    min_true: 3
+    effect:
+      allow_new_entries: true
+      allowed_groups: [EXTENSION, GREED]
       prioritize_symbols: [BTCUSD, ETHUSD]
       risk_multiplier_macro: 1.0
 
-  - name: "crypto_altseason_lite"
-    all:
-      - { feature: FEAR_GREED_CRYPTO, op: ">", value: 70 }
-      - { feature: VIX, op: "<", value: 18 }
-      - { feature: RELVOL_QQQ_20D, op: ">", value: 1.20 }
+  - name: crypto_altseason_lite
     any:
-      - { feature: FNG_STOCKS, op: ">", value: 60 }
-      - { feature: BREADTH_SPX_PCT_ABOVE_50D, op: ">", value: 55 }
+      - { feature: FEAR_GREED_CRYPTO, op: ">", value: 55 }
+      - { feature: BTCUSD, op: ">", value: 60000 }
+      - { feature: ETHUSD, op: ">", value: 3200 }
+    min_true: 2
     effect:
       allow_new_entries: true
       allowed_groups: [GREED]
       prioritize_symbols: [BTCUSD, ETHUSD]
+
+  - name: breadth_risk_off_liquidity
+    all:
+      - { feature: ON_RRP, op: ">", value: 500 }
+      - { feature: NFCI, op: ">", value: 0.5 }
+    effect:
+      allow_new_entries: false
+      allowed_groups: [CORE]
+      avoid_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
+      risk_multiplier_macro: 0.5
 
   # --- LIQUIDEZ / AMPLITUD DEFENSIVA ---
   - name: "breadth_risk_off_liquidity"
