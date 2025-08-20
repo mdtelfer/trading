@@ -1,0 +1,136 @@
+# ----------------------------------------------
+# TECHNICAL RULES (INTRADAY)  —  v1.1 (2025-08-20)
+# ----------------------------------------------
+meta:
+  style: intraday
+  timezone: America/Guayaquil
+  data_source: mt5 # misma fuente para backtest y live
+  repaint_policy: "no_repaint" # confirmaciones por cierre siempre
+
+timeframes:
+  signal_tf: M15
+  confirm_tf: M5
+  context_tf: H1
+
+sessions_local: # horarios en America/Guayaquil (UTC-5)
+  london: ["03:00", "06:00"]
+  ny_cash: ["08:30", "11:30"]
+  avoid_end_ny: true # evita última hora de NY para nuevas entradas
+
+gating:
+  require_long_permission: true
+  risk_multiplier_macro_allowed: [0.5, 1.0]
+  news_block_minutes_before: 30
+  news_block_minutes_after: 30
+  spread_max_percentile_1h: 0.70 # p70 última hora
+  missing_bar_policy: "reject_signal"
+  max_bar_age_minutes: 2 # tolerancia de retraso feed intradía
+
+indicators:
+  ema_fast: 20
+  ema_mid: 50
+  ema_slow: 200
+  atr_n: 14
+  rsi_n: 14
+  roc_n: 12
+  vwap_bands_sigma: [1.0, 2.0] # para bandas ±σ intradía
+
+volatility_bounds_atr_norm_default: [0.0008, 0.0120] # ATR_M15/close
+volatility_bounds_atr_norm_overrides: # por símbolo (si difiere)
+  XAUUSD: [0.0015, 0.0100]
+  SPX500: [0.0004, 0.0040]
+  NDX100: [0.0006, 0.0060]
+  US30: [0.0005, 0.0060]
+  BTCUSD: [0.0030, 0.0500]
+  ETHUSD: [0.0040, 0.0700]
+
+boxes: # Cajas S/R adaptativas (pivotes confirmados)
+  atr_factor_k: 1.0 # ancho = ATR(n)*k
+  vol_z_min: 0.8 # z-score tick_volume mínimo para crear caja
+  retest_max_bars: 5 # barras para aceptar retest tras breakout
+  invalidate_if_away_atr: 2.0 # invalida si precio se aleja > 2*ATR de la caja
+  level_close_confirmation: true # confirmar rupturas por CIERRE, no mecha
+
+trendlines:
+  slope_eps: 0.00005
+  retest_alpha_atr: 0.30 # tolerancia de toque en retest TL
+  close_confirmation: true
+
+structure:
+  require_h1_uptrend_for_longs: true # HH/HL H1 ó EMA_slow pendiente > 0
+  max_wick_ratio_for_entry: 0.6 # evita velas con mechas excesivas
+
+setups:
+  BRK_RT: # Breakout con retesteo
+    min_confluence: 60
+    require_bias_up_h1: true
+    require_price_above_vwap: true
+    require_retest_hold: true
+    retest_max_bars: 5
+    entry_type: "limit_or_stop_on_retest"
+    sl_policy: "below_box_or_1xATR" # usar el mayor
+    tp1_rr: 2.0
+    runner_exit: "inverse_signal_or_structure_break"
+  MR_DYN: # Mean reversion a soporte dinámico
+    min_confluence: 60
+    require_h1_trend_up: true
+    dynamic_support: ["EMA20_M15", "EMA34_M15", "VWAP_-1σ", "VWAP_-2σ"]
+    require_rejection_candle: true
+    allow_light_divergence_filter: true # usa RSI/ROC para evitar divergencia fuerte
+    entry_type: "confirm_close_m5_m15"
+    sl_policy: "below_swing_or_band"
+    tp1_rr: 2.0
+    runner_exit: "inverse_signal_or_structure_break"
+  MOM_PB: # Momentum post-pullback
+    min_confluence: 60
+    require_tl_bull_break: true
+    pullback_bars_range: [2, 4] # M5
+    require_higher_lows: true
+    require_price_above_vwap: true
+    entry_type: "close_of_reacceleration_or_stop"
+    sl_policy: "below_pullback_low"
+    tp1_rr: 2.0
+    runner_exit: "inverse_signal"
+
+scoring_weights: # suma = 100
+  regime_h1: 20 # EMA/estructura
+  level_confluence: 25 # caja S/R, VWAP/MA
+  session_timing: 10 # LDN / NY
+  volatility_spread_ok: 15 # ATR_norm y spread p70
+  candle_structure: 20 # rechazo/impulso/pullback limpio
+  cleanliness: 10 # sin news ±30, sin wick extremo
+
+risk_and_limits:
+  groups:
+    core: { R_multiplier: 1.0 }
+    extend: { R_multiplier: 0.5 }
+    greed: { R_multiplier: 0.25 } # alt-coins
+  max_positions_total: 3
+  max_positions_per_symbol: 1
+  max_positions_per_group: 2
+  reentry:
+    allowed: true
+    attempts_max: 1
+    R_factor: 0.5
+    same_session_only: true
+    require_h1_structure_intact: true
+  pyramiding:
+    allowed: true
+    max_adds: 2
+    add_trigger_R: 1.0
+    add_R_step: 0.25
+    move_global_sl_to_be_on_add: true
+
+execution_hygiene:
+  min_stop_distance_pts:
+    XAUUSD: 120
+  slippage_pips_max: 2
+  fill_latency_ms_max: 800
+  reject_if_spread_worsens_pct: 0.35 # vs media de 5 min
+
+kpis_enablement:
+  sharpe_min: 0.8
+  max_drawdown_pct: 12.0
+  tp1_hit_rate_min: 0.55
+  profit_factor_min: 1.3
+  violations_must_be_zero: true

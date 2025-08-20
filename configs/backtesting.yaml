@@ -1,0 +1,49 @@
+success_criteria:
+  rentability:
+    sharpe_ratio:
+      min: 1.0
+      scenarios: [bull, neutral, black_swan]
+    profit_factor:
+      min: 1.5
+      scenarios: [bull, neutral]
+    consistency_ratio:
+      min: 0.60 # 60%
+      scenarios: [bull, neutral, black_swan]
+
+  risk_control:
+    max_drawdown:
+      bull: 0.12 # 12%
+      neutral: 0.12
+      bear: 0.12
+      black_swan: 0.10
+    max_daily_loss:
+      limit: 0.02 # 2%
+    dd_mode_compliance:
+      required: true
+
+  discipline:
+    stoploss_takeprofit_compliance:
+      min: 0.90 # 90%
+    max_exceptions:
+      allowed: 2
+    hard_blocks_compliance:
+      required: true
+
+  coverage:
+    min_trades_per_scenario: 200
+    min_groups_covered: 3
+    fused_fast_slow_concordance:
+      min: 0.90
+
+  data_quality:
+    concordance_live_vs_historic:
+      min: 0.90
+    gaps_allowed: false
+    differences_documented: true
+
+  transparency:
+    logs_required: true
+    journaling:
+      quantitative: required
+      qualitative: required
+    reproducibility: required

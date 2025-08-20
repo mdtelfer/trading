@@ -1,0 +1,134 @@
+# ----------------------------------------------
+# SWING RULES  —  v1.1 (2025-08-20)
+# ----------------------------------------------
+meta:
+  style: swing
+  timezone: America/Guayaquil
+  data_source: mt5
+  repaint_policy: "no_repaint"
+
+timeframes:
+  signal_tf: [H4, D1] # se permite definir por símbolo; por defecto D1 para señal, H4 para timing
+  confirm_tf: H1
+  context_tf: W1
+  default_signal_tf: D1
+  default_timing_tf: H4
+  expected_holding_days: [3, 15]
+
+scope_and_groups:
+  allowed_groups: ["core", "extend"] # Núcleo y Extensión
+  disallowed_groups: ["greed"] # Codicia extrema (DOGE, ADA, XRP, LTC, XMR) — PROHIBIDO SWING
+  reject_message_for_disallowed: "swing_not_allowed_for_symbol"
+
+gating:
+  require_long_permission: true
+  risk_multiplier_macro_allowed: [0.5, 1.0]
+  news_block_minutes_before: 60 # swing amplía ventana
+  news_block_minutes_after: 60
+  weekend_gap_protection: true # evalúa cierre semanal y gaps
+  missing_bar_policy: "reject_signal"
+
+indicators:
+  ema_fast_d1: 20
+  ema_mid_d1: 50
+  ema_slow_d1: 200
+  ema_fast_h4: 20
+  ema_mid_h4: 50
+  ema_slow_h4: 200
+  atr_n_d1: 14
+  rsi_n: 14
+  roc_n: 12
+  vwap_week_sigma: [1.0, 2.0] # VWAP semanal
+  vwap_month_sigma: [1.0, 2.0] # VWAP mensual
+
+volatility_bounds_atr_norm_default_d1: [0.0005, 0.0200] # ATR_D1/close
+volatility_bounds_overrides_d1:
+  XAUUSD: [0.0010, 0.0200]
+  SPX500: [0.0003, 0.0060]
+  NDX100: [0.0004, 0.0080]
+  US30: [0.0004, 0.0080]
+  BTCUSD: [0.0080, 0.1500] # swing permitido para BTC
+  ETHUSD: [0.0100, 0.2000] # swing permitido para ETH
+
+structure:
+  require_d1_uptrend_for_longs: true # EMA20>50>200 D1 y/o HH/HL D1
+  h4_timing_must_align: true # HH/HL en H4 para timing
+  avoid_major_weekly_supply: true # evita entrar justo en oferta semanal inmediata
+
+setups:
+  SW_TREND: # Trend following
+    min_confluence: 65
+    d1_bias_condition: "EMA20>EMA50>EMA200 or HH/HL_D1"
+    h4_pullback_to: ["EMA20_H4", "VWAP_week_-1σ"]
+    require_rejection: true
+    entry_type: "limit_on_pullback_or_break_of_trigger"
+    sl_policy: "below_structure_or_2xATR_D1"
+    tp1_rr: 2.0
+    partial_pct: [0.3, 0.5] # rango permitido para parcial
+    runner_exit: "h4_inverse_signal_or_structure_break"
+  SW_MR: # Mean reversion macro
+    min_confluence: 65
+    higher_tf_support: ["EMA200_D1", "VWAP_month_-1σ", "weekly_level"]
+    rejection_tf: ["H4", "H1"]
+    allow_light_divergence_filter: true
+    entry_type: "confirm_close_h4"
+    sl_policy: "below_support_or_2xATR_D1"
+    tp1_rr: 2.0
+    partial_pct: [0.3, 0.5]
+    runner_exit: "h4_inverse_signal"
+  SW_MOM: # Momentum breakout de rango
+    min_confluence: 70
+    d1_range_lookback_days: 10-20
+    confirm_h4_continuation: true
+    require_volume_vol_expansion: true
+    entry_type: "stop_above_range"
+    sl_policy: "below_breakout_base_or_1.5xATR_D1"
+    tp1_rr: 2.0
+    partial_pct: [0.3, 0.5]
+    runner_exit: "h4_inverse_signal"
+
+scoring_weights: # suma = 100 (ligeramente distinta a intradía)
+  regime_d1_w1: 30 # peso mayor a régimen superior
+  level_confluence: 25 # EMA200/VWAP mensual/semanal
+  volatility_ok: 10 # ATR_D1 en rango
+  timing_h4: 15 # pullback/continuación en H4
+  candle_quality: 10 # rechazo/impulso limpio
+  cleanliness: 10 # sin news ±60, evitar oferta semanal inmediata
+
+risk_and_limits:
+  per_trade_R_by_group:
+    core: 0.5 # 0.5R del R base utilizado para intradía
+    extend: 0.25
+  max_positions_total: 3
+  max_positions_per_symbol: 1
+  pyramiding:
+    allowed: true
+    max_adds: 2
+    add_trigger_R: 1.0
+    add_R_step: 0.25
+    move_global_sl_to_be_on_add: true
+  reentry:
+    allowed: true
+    attempts_max: 1
+    R_factor: 0.5
+    require_d1_structure_intact: true
+
+execution_hygiene:
+  hold_overnight_allowed: true
+  hold_weekend_policy:
+    crypto:
+      BTCUSD: "allowed_with_review" # evaluar volatilidad fin de semana
+      ETHUSD: "allowed_with_review"
+    others: "close_before_weekend" # por defecto cerrar antes del cierre semanal
+  gap_check:
+    enabled: true
+    max_gap_pct_to_add: 1.5 # no añadir si gap desfavorable > 1.5%
+    fail_action: "do_not_add"
+
+kpis_enablement:
+  sharpe_min: 1.0
+  max_drawdown_pct: 12.0
+  trades_min_backtest: 100
+  profit_factor_min: 1.2
+  min_symbols_pf12_in_core_pct: 70 # % de símbolos núcleo con PF≥1.2
+  violations_must_be_zero: true
