@@ -1,0 +1,30 @@
+name: Task
+description: Tarea concreta
+labels: ["type:task"]
+body:
+  - type: dropdown
+    id: workstream
+    attributes:
+      label: Workstream
+      options:
+        [
+          "Datos",
+          "Evaluator",
+          "Riesgo",
+          "Ejecución",
+          "Dashboard",
+          "Alertas&Journal",
+        ]
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: ["P0", "P1", "P2"]
+  - type: dropdown
+    id: effort
+    attributes:
+      label: Effort
+      options: ["S", "M", "L"]
+  - type: textarea
+    id: acceptance
+    attributes: { label: Acceptance Criteria }

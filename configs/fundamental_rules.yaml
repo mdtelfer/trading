@@ -96,7 +96,12 @@ scenarios:
       allow_new_entries: true
       allowed_groups: [CORE, EXTENSION, GREED]
       prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
-      risk_multiplier_macro: 1.0
+      priority_overrides:
+        NDX100: { bump: 0.10, tags: ["risk_on", "growth"] }
+        SPX500: { bump: 0.08, tags: ["risk_on", "broad"] }
+        GER30: { bump: 0.05, tags: ["risk_on", "europe"] }
+        BTCUSD: { bump: 0.05, tags: ["risk_on", "crypto"] }
+        ETHUSD: { bump: 0.05, tags: ["risk_on", "crypto"] }
 
   - name: breadth_risk_on_confirmed
     any:
@@ -107,8 +112,10 @@ scenarios:
     effect:
       allow_new_entries: true
       allowed_groups: [CORE, EXTENSION, GREED]
-      prioritize_symbols: [NDX100, SPX500, GER30, BTCUSD, ETHUSD]
-      risk_multiplier_macro: 0.9
+      prioritize_symbols: [NDX100, SPX500, GER30]
+      priority_overrides:
+        NDX100: { bump: 0.10, tags: ["breadth", "risk_on"] }
+        SPX500: { bump: 0.08, tags: ["breadth", "risk_on"] }
 
   - name: risk_off_defensive
     any:
@@ -121,9 +128,6 @@ scenarios:
       allowed_groups: [CORE]
       prioritize_symbols: [XAUUSD, USDJPY, DXY]
       avoid_symbols: [BTCUSD, ETHUSD, NDX100]
-      group_caps:
-        CORE:
-          max_open_positions: 2
       risk_multiplier_macro: 0.5
 
   - name: extreme_safe_haven
@@ -178,9 +182,13 @@ scenarios:
     min_true: 3
     effect:
       allow_new_entries: true
-      allowed_groups: [EXTENSION, GREED]
       prioritize_symbols: [BTCUSD, ETHUSD]
-      risk_multiplier_macro: 1.0
+      priority_overrides:
+        BTCUSD: { bump: 0.10, tags: ["crypto"] }
+        ETHUSD: { bump: 0.08, tags: ["crypto"] }
+      group_caps:
+        GREED:
+          max_open_positions: 2
 
   - name: crypto_altseason_lite
     any:
@@ -190,8 +198,10 @@ scenarios:
     min_true: 2
     effect:
       allow_new_entries: true
-      allowed_groups: [GREED]
       prioritize_symbols: [BTCUSD, ETHUSD]
+      group_caps:
+        GREED:
+          max_open_positions: 2
 
   - name: breadth_risk_off_liquidity
     all:

@@ -451,6 +451,25 @@ def evaluate_tier(
                 risk_multiplier = rm
                 band_name = rb.get("name")
 
+    # ---- NUEVO: acumulador de caps por grupo (no filtra elegibilidad) ----
+    group_caps_acc: dict[str, dict[str, int]] = {}
+
+    def _merge_group_caps(dst: dict, src: dict):
+        """Funde caps conservadoramente: mismo grupo => toma el MIN de max_open_positions."""
+        if not isinstance(src, dict):
+            return
+        for g, cfg in src.items():
+            if not isinstance(cfg, dict):
+                continue
+            try:
+                m = int(cfg.get("max_open_positions", 0))
+            except Exception:
+                continue
+            if g in dst:
+                dst[g]["max_open_positions"] = min(dst[g]["max_open_positions"], m)
+            else:
+                dst[g] = {"max_open_positions": m}
+
     # 3) scenarios (cuenta verdaderas y soporta confirmations)
     active_scenarios: list[str] = []
     for sc in rules.scenarios:
@@ -493,15 +512,14 @@ def evaluate_tier(
             if eff.get("allow_new_entries"):
                 can_open_new = can_open_new and True
 
-            # allowed_groups (intersección)
+            # allowed_groups (intersección) — se mantiene
             if "allowed_groups" in eff:
                 g = eff.get("allowed_groups") or []
                 allowed_groups = [x for x in allowed_groups if x in g]
 
-            # group_caps (capar grupos permitidos) — intersección dura
+            # group_caps — YA NO filtra allowed_groups; solo acumula en meta
             if "group_caps" in eff:
-                caps = eff.get("group_caps") or []
-                allowed_groups = [x for x in allowed_groups if x in caps]
+                _merge_group_caps(group_caps_acc, eff.get("group_caps") or {})
 
             # colecciones para suggestions
             prioritize.extend(eff.get("prioritize_symbols", []) or [])
@@ -523,6 +541,7 @@ def evaluate_tier(
         "buy_suggestions": suggestions,
         "missing_features": sorted(unique(missing_overall)),
         "feature_sample_size": len(snap),
+        "group_caps": group_caps_acc,  # <-- NUEVO: caps para que los aplique el router
     }
 
     reason = reason or (
@@ -594,6 +613,31 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
     else:
         avoid = inter(fast.avoid, slow.avoid)
 
+    # ---- NEW: merge group_caps conservador (min por grupo) ----
+    def _merge_caps(a: dict | None, b: dict | None) -> dict:
+        out: dict[str, dict[str, int]] = {}
+
+        def _add(src: dict | None):
+            if not isinstance(src, dict):
+                return
+            for g, cfg in src.items():
+                if not isinstance(cfg, dict):
+                    continue
+                try:
+                    m = int(cfg.get("max_open_positions", 0))
+                except Exception:
+                    continue
+                if g in out:
+                    out[g]["max_open_positions"] = min(out[g]["max_open_positions"], m)
+                else:
+                    out[g] = {"max_open_positions": m}
+
+        _add(a)
+        _add(b)
+        return out
+
+    fused_caps = _merge_caps(fast.meta.get("group_caps"), slow.meta.get("group_caps"))
+
     # buy suggestions (intersección + promedio score)
     f_sug = {s["symbol"]: s for s in fast.meta.get("buy_suggestions", [])}
     s_sug = {s["symbol"]: s for s in slow.meta.get("buy_suggestions", [])}
@@ -626,6 +670,7 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
         "blocked_by": slow.meta.get("blocked_by") or fast.meta.get("blocked_by"),
         "buy_suggestions": buy_suggestions,
         "fuse": rules.fuse_cfg,
+        "group_caps": fused_caps,  # <-- NEW
     }
 
     return EvalResult(
