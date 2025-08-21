@@ -1,5 +1,6 @@
 # scripts/ingest_mt5_candles.py  (concurrente)
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import contextlib
 import datetime as dt
 import os
 import threading
@@ -190,10 +191,8 @@ def main_backfill():
                     err_total += 1
                     print(f"[ERR] {symbol} {tf}: {err}")
     finally:
-        try:
+        with contextlib.suppress(Exception):
             pool.closeall()
-        except Exception:
-            pass
         mt5.shutdown()
 
     print(f"Done. Filas upsertadas: {ok_total} | Tareas con error: {err_total}")
