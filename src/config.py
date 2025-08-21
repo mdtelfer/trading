@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-
+from dataclasses import dataclass
 import yaml
 
 try:
@@ -42,6 +42,7 @@ def load_yaml(path: str | Path = None):
         return yaml.safe_load(f) or {}
 
 
+
 def mt5_creds():
     login = os.getenv("MT5_LOGIN")
     password = os.getenv("MT5_PASSWORD")
@@ -49,3 +50,79 @@ def mt5_creds():
     path = os.getenv("MT5_PATH")
     login_int = int(login) if login and login.isdigit() else None
     return login_int, password, server, path
+
+@dataclass
+class TechnicalRules:
+    data: dict
+
+
+    @property
+    def timezone(self) -> str:
+        return self.data["meta"]["timezone"]
+
+
+    @property
+    def sessions(self) -> dict:
+        return self.data.get("sessions_local", {})
+
+
+    @property
+    def gating(self) -> dict:
+        return self.data.get("gating", {})
+
+
+    @property
+    def indicators(self) -> dict:
+        return self.data.get("indicators", {})
+
+
+    @property
+    def boxes(self) -> dict:
+        return self.data.get("boxes", {})
+
+
+    @property
+    def trendlines(self) -> dict:
+        return self.data.get("trendlines", {})
+
+
+    @property
+    def structure(self) -> dict:
+        return self.data.get("structure", {})
+
+
+    @property
+    def setups(self) -> dict:
+        return self.data.get("setups", {})
+
+
+    @property
+    def scoring_weights(self) -> dict:
+        return self.data.get("scoring_weights", {})
+
+
+    @property
+    def volatility_bounds_default(self):
+        return self.data.get("volatility_bounds_atr_norm_default", [0.0008, 0.012])
+
+
+    @property
+    def volatility_overrides(self) -> dict:
+        return self.data.get("volatility_bounds_atr_norm_overrides", {})
+
+
+    @property
+    def risk_and_limits(self) -> dict:
+        return self.data.get("risk_and_limits", {})
+
+
+    @property
+    def exec_hygiene(self) -> dict:
+        return self.data.get("execution_hygiene", {})
+
+
+
+
+    def load_yaml(path: Path) -> dict:
+    with open(path, "r", encoding="utf-8") as f:
+    return TechnicalRules(data)

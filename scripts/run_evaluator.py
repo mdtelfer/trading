@@ -382,7 +382,7 @@ def build_buy_suggestions(
 
     def group_of(sym: str) -> str:
         for g, cfg in rules.portfolio_groups.items():
-            if sym in (cfg or {}).get("symbols", []):
+            if sym in (cfg or {}).get("symbols", []):  # pyright: ignore[reportUnknownMemberType]
                 return g
         return "CORE"
 
@@ -492,7 +492,7 @@ def evaluate_tier(  # noqa: C901
         for g, cfg in src.items():
             if not isinstance(cfg, Mapping):
                 continue
-            m = try_float(cfg.get("max_open_positions"))
+            m = try_float(cfg.get("max_open_positions"))  # pyright: ignore[reportUnknownMemberType]
             m_int = int(m) if m is not None else None
             if m_int is None:
                 continue
@@ -655,7 +655,9 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
             for g, cfg_g in src.items():
                 if not isinstance(cfg_g, dict):
                     continue
-                m = try_float(cfg_g.get("max_open_positions"))
+                m = try_float(
+                    cfg_g.get("max_open_positions")
+                )  # pyright: ignore[reportUnknownMemberType]
                 m_int = int(m) if m is not None else None
                 if m_int is None:
                     continue
