@@ -1,4 +1,3 @@
-# .github/workflows/ci.yml
 name: CI
 
 on:
@@ -24,32 +23,53 @@ jobs:
           --health-retries=10
     steps:
       - uses: actions/checkout@v4
+
       - name: Install psql client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
-      - name: Init schema
-        env:
-          PGPASSWORD: postgres
+
+      - name: Wait for DB
+        env: { PGPASSWORD: postgres }
         run: |
-          until pg_isready -h localhost -p 5432 -U postgres -d trading; do sleep 1; done
-          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb;"
-          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -f init/trading_all_in_one.sql
+          for i in {1..60}; do
+            pg_isready -h localhost -p 5432 -U postgres -d trading && break || sleep 1
+          done
+
+      - name: Enable TimescaleDB ext
+        env: { PGPASSWORD: postgres }
+        run: psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb;"
+
+      - name: Apply schema (all SQL in init/)
+        env: { PGPASSWORD: postgres }
+        run: |
+          shopt -s nullglob
+          for f in init/*.sql; do
+            echo "==> Applying $f"
+            psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -f "$f"
+          done
+
       - name: Smoke queries
-        env:
-          PGPASSWORD: postgres
+        env: { PGPASSWORD: postgres }
         run: |
-          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT count(*) FROM timescaledb_information.hypertables;"
-          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT 1;"
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT count(*) AS hypertables FROM timescaledb_information.hypertables;"
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT now();"
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install deps
+        with: { python-version: '3.12' }
+      - name: Install deps (dev)
         run: |
-          pip install -r requirements.txt || true
+          pip install -r requirements-dev.txt || true
           pip install ruff
       - name: Ruff
         run: ruff check .
+      - name: Ruff format
+        run: ruff format .
+
+      - name: Black
+        run: black --check .
+
+      - name: mypy
+        run: mypy .

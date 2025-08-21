@@ -1,7 +1,7 @@
 # scripts/run_external_to_macro.py
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from contextlib import suppress
 from datetime import UTC, datetime, timedelta
 import time
@@ -10,7 +10,6 @@ from typing import Any, Final, TypedDict, cast
 import psycopg2
 from psycopg2.extensions import connection as PGConnection
 from psycopg2.extras import Json
-
 from src.config import env, load_yaml
 from src.log import get_logger, init_logger
 
@@ -81,6 +80,12 @@ class YahooTNXObs(TypedDict):
     value_pct: float
 
 
+class YahooQuote(TypedDict):
+    symbol: str
+    value: int | float
+    time: str | datetime  # puede venir como string o datetime
+
+
 # ------------------------------- Utilidades ----------------------------------
 
 
@@ -135,11 +140,6 @@ def _yaml_symbol(macro: MacroCfg, feature: str, default: str | None = None) -> s
         return sym if sym else default
     except Exception:
         return default
-
-
-def _cfg_dict(m: Mapping[str, Any], key: str) -> dict[str, Any]:
-    v = m.get(key, {})
-    return cast(dict[str, Any], v or {})
 
 
 # Cadencias en segundos (con tipos para mypy)
@@ -228,16 +228,65 @@ def _upsert_simple_fred(conn: PGConnection, feature: str, series_id: str) -> boo
     return True
 
 
-def _upsert_yahoo_price(conn: PGConnection, feature: str, getter) -> bool:
-    q = getter()
-    if not q:
+def _as_yahoo_quote(obj: Mapping[str, Any]) -> YahooQuote:
+    try:
+        symbol = str(obj["symbol"])
+        value = float(obj["value"])
+        t = obj["time"]
+    except KeyError as e:
+        raise ValueError(f"YahooQuote missing key: {e}") from None
+    # devolvemos la estructura tipada (time puede ser str o datetime)
+    return {"symbol": symbol, "value": value, "time": t}
+
+
+def _coerce_yahoo_quote(obj: Mapping[str, object]) -> YahooQuote:
+    # Validación mínima + normalización de tipos
+    if "symbol" not in obj or "value" not in obj or "time" not in obj:
+        raise ValueError("YahooQuote requiere keys: 'symbol', 'value', 'time'")
+
+    symbol = str(obj["symbol"])
+
+    val_obj = obj["value"]
+    if isinstance(val_obj, int | float):
+        value = float(val_obj)
+    else:
+        # intenta castear números en string, si vienen así
+        try:
+            value = float(str(val_obj))
+        except Exception as e:
+            raise TypeError(f"value no convertible a float: {val_obj!r}") from e
+
+    t_obj = obj["time"]
+    if isinstance(t_obj, datetime | str):
+        time_val: datetime | str = t_obj
+    else:
+        # última chance: usa str()
+        time_val = str(t_obj)
+
+    # Construye el TypedDict con tipos exactos
+    q: YahooQuote = {"symbol": symbol, "value": value, "time": time_val}
+    return q
+
+
+def _upsert_yahoo_price(
+    conn: PGConnection,
+    feature: str,
+    getter: Callable[[], Mapping[str, object] | None],
+) -> bool:
+    q_raw = getter()
+    if not q_raw:
         return False
+
+    q = _coerce_yahoo_quote(q_raw)
+    t = q["time"]
+    ts_iso = t.isoformat() if isinstance(t, datetime) else t
+
     upsert_value(
         conn,
         feature=feature,
-        symbol=str(q["symbol"]),
-        value=float(q["value"]),
-        ts_iso=str(q["time"]),
+        symbol=q["symbol"],
+        value=q["value"],
+        ts_iso=ts_iso,
         source_id="yfinance",
         method="unofficial_api",
     )
@@ -871,7 +920,7 @@ def main() -> None:  # noqa: C901
                                 method="unofficial_api",
                             )
                             log.info(
-                                f"{feat} {q['value']:.2f} (vol {q['vol']:.0f} / avg20 {q['avg20']:.0f})"
+                                f"{feat} {q['value']:.2f} (vol {q['vol']:.0f} / avg20 {q['avg20']:.0f})"  # noqa: E501
                             )
                         _mark(last_run, feat, now)
 

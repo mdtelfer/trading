@@ -10,14 +10,14 @@ APScheduler==3.10.4
 PyYAML==6.0.2
 tenacity==8.5.0
 beautifulsoup4==4.12.3
-MetaTrader5
-lxml
-alembic
-pandas
-yfinance
-selenium
-webdriver-manager
-psutil
-streamlit
-loguru
-python-json-logger
+lxml==5.2.2
+alembic==1.13.2
+pandas==2.2.2
+yfinance==0.2.43
+psutil==5.9.8
+streamlit==1.37.1
+loguru==0.7.2
+python-json-logger==2.0.7
+
+MetaTrader5==5.0.5200 ; platform_system == "Windows"
+

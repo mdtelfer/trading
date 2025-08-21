@@ -11,7 +11,6 @@ import MetaTrader5 as mt5
 import psycopg2
 from psycopg2.extensions import connection as PGConnection, cursor as PGCursor
 from psycopg2.extras import Json
-
 from src.config import env, load_yaml
 from src.log import get_logger, init_logger
 from src.router import get_all_mt5_ticks
@@ -57,8 +56,10 @@ def wait_for_mt5_ready(timeout_sec: int = 60) -> bool:
         try:
             # intenta engancharse sin abrir otra instancia
             MT5.connect(retries=1, wait_sec=0.5)
-            acct = mt5.account_info()
-            if acct and acct.login:
+            acct = (
+                mt5.account_info()
+            )  # pyright: ignore[reportUnknownMemberType, reportAttributeAccessIssue]
+            if acct and acct.login:  # type: ignore
                 return True
         except Exception:
             pass

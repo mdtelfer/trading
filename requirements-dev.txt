@@ -1,3 +1,5 @@
+-r requirements.txt
+
 # --- Linters / Formatters ---
 black==24.8.0
 ruff==0.6.9
@@ -19,8 +21,11 @@ types-beautifulsoup4
 # --- Testing ---
 pytest==8.3.3
 pytest-asyncio==0.24.0
-httpx[cli]==0.27.0
 
 # --- Jupyter / Notebooks (opcional) ---
 jupyterlab==4.2.5
 ipykernel==6.29.5
+
+# --- Scrapers (solo si los usas en dev) ---
+selenium
+webdriver-manager

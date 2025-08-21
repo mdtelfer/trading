@@ -1,17 +1,18 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from contextlib import closing
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import UTC, datetime, timedelta
-import logging
 import os
 import time
-from typing import Any
+from typing import Any, cast
 
 import psycopg2
+from psycopg2.extensions import connection as PGConnection
 from psycopg2.extras import Json
+from src.log import get_logger, init_logger
 import yaml
 
 """
@@ -24,19 +25,30 @@ Macro Evaluator (fast/slow → fused)
 """
 
 # ---------------------------------------------------------------------------
-# Logger local
+# Logger
 # ---------------------------------------------------------------------------
-
-logging.basicConfig(
-    level=logging.DEBUG,  # cambia a INFO si prefieres menos ruido
-    format="%(asctime)s | %(levelname)s | macro_evaluator | %(message)s",
-)
-logger = logging.getLogger("macro_evaluator")
+init_logger()
+logger = get_logger("macro_evaluator")
 
 
 # ---------------------------------------------------------------------------
-# Utilidades básicas
+# Helpers de tipado/seguridad
 # ---------------------------------------------------------------------------
+
+
+def try_float(x: Any) -> float | None:
+    """Convierte a float si puede, o devuelve None sin lanzar excepción."""
+    try:
+        return float(x) if x is not None else None
+    except Exception:
+        return None
+
+
+def as_str_list(xs: Any) -> list[str]:
+    """Filtra a list[str], ignora None u objetos no str."""
+    if not isinstance(xs, list | tuple):
+        return []
+    return [s for s in xs if isinstance(s, str)]
 
 
 def now_utc() -> datetime:
@@ -74,25 +86,26 @@ class Rules:
 
 
 def load_rules(path: str) -> Rules:
-    logger.info(f"Cargando reglas: {path}")
+    logger.info("Cargando reglas: %s", path)
     with open(path, encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
     rules = Rules(
-        raw=data,
-        portfolio_groups=data.get("portfolio", {}).get("groups", {}),
-        eval_cfg=data.get("evaluation", {}),
-        fuse_cfg=data.get("fuse", {}),
-        hard_blocks=data.get("hard_blocks", []),
-        risk_bands=data.get("risk_bands", []),
-        scenarios=data.get("scenarios", []),
-        overrides=data.get("symbol_overrides", {}),
+        raw=cast(dict[str, Any], data),
+        portfolio_groups=cast(dict[str, Any], data.get("portfolio", {}).get("groups", {})),
+        eval_cfg=cast(dict[str, Any], data.get("evaluation", {})),
+        fuse_cfg=cast(dict[str, Any], data.get("fuse", {})),
+        hard_blocks=cast(list[dict[str, Any]], data.get("hard_blocks", [])),
+        risk_bands=cast(list[dict[str, Any]], data.get("risk_bands", [])),
+        scenarios=cast(list[dict[str, Any]], data.get("scenarios", [])),
+        overrides=cast(dict[str, Any], data.get("symbol_overrides", {})),
     )
     logger.info(
-        f"Reglas cargadas | groups={len(rules.portfolio_groups)} "
-        f"hard_blocks={len(rules.hard_blocks)} "
-        f"risk_bands={len(rules.risk_bands)} "
-        f"scenarios={len(rules.scenarios)}"
+        "Reglas cargadas | groups=%d hard_blocks=%d risk_bands=%d scenarios=%d",
+        len(rules.portfolio_groups),
+        len(rules.hard_blocks),
+        len(rules.risk_bands),
+        len(rules.scenarios),
     )
     return rules
 
@@ -121,7 +134,7 @@ def load_db_creds() -> DBCreds:
     )
 
 
-def get_latest_features(conn) -> list[dict[str, Any]]:
+def get_latest_features(conn: PGConnection) -> list[dict[str, Any]]:
     """Lee snapshot simple de core.v_macro_latest."""
     sql = """
         SELECT feature, value, ts_utc, aux_values, status
@@ -134,18 +147,18 @@ def get_latest_features(conn) -> list[dict[str, Any]]:
     for feature, value, ts, aux, status in rows:
         out.append(
             {
-                "feature": feature,
-                "value": float(value) if value is not None else None,
+                "feature": cast(str, feature),
+                "value": try_float(value),
                 "ts": ts,
-                "aux": aux or {},
-                "status": status,
+                "aux": cast(dict[str, Any], aux or {}),
+                "status": cast(str, status),
             }
         )
     return out
 
 
 def insert_macro_state(
-    conn,
+    conn: PGConnection,
     *,
     tier: str,
     ts: datetime,
@@ -184,10 +197,16 @@ def insert_macro_state(
         )
     conn.commit()
     ms = int((time.time() - t0) * 1000)
+    hb_txt = "+".join(meta.get("hard_blocks", [])) if meta else ""
     logger.info(
-        f"Insert macro_state | tier={tier} rm={risk_multiplier:.2f} "
-        f"groups={','.join(allowed_groups)} prio={len(prioritize)} avoid={len(avoid)} "
-        f"hb={'+'.join(meta.get('hard_blocks', [])) if meta else ''} | ms={ms}"
+        ("Insert macro_state | tier=%s rm=%.2f groups=%s " "prio=%d avoid=%d hb=%s | ms=%d"),
+        tier,
+        risk_multiplier,
+        ",".join(allowed_groups),
+        len(prioritize),
+        len(avoid),
+        hb_txt,
+        ms,
     )
 
 
@@ -196,20 +215,26 @@ def insert_macro_state(
 # ---------------------------------------------------------------------------
 
 
-def normalize_value(feature: str, value: float | None, aux: dict[str, Any]) -> float | None:
+def normalize_value(feature: str, value: float | None, aux: Mapping[str, Any]) -> float | None:
     if value is None:
         return None
+
     # 1) si viene value_pct en aux, úsalo
-    if isinstance(aux, dict) and "value_pct" in aux:
-        try:
-            return float(aux["value_pct"])
-        except Exception:
-            pass
+    vp = aux.get("value_pct")
+    if vp is not None:
+        v = try_float(vp)
+        if v is not None:
+            return v
+
     # 2) si aux.unit dice stored=decimal y original=percent => *100
-    unit = aux.get("unit") if isinstance(aux, dict) else None
-    if isinstance(unit, dict):
-        if unit.get("stored") == "decimal" and unit.get("original") == "percent":
+    unit_raw = aux.get("unit")
+    if isinstance(unit_raw, Mapping):
+        unit_map: Mapping[str, Any] = cast(Mapping[str, Any], unit_raw)
+        stored = unit_map.get("stored")
+        original = unit_map.get("original")
+        if stored == "decimal" and original == "percent":
             return float(value) * 100.0
+
     # 3) valor tal cual
     return float(value)
 
@@ -228,19 +253,23 @@ _OPS: dict[str, Callable[[float, float], bool]] = {
 }
 
 
-def check_condition(cond: dict[str, Any], snapshot: dict[str, float]) -> tuple[bool, str | None]:
+def check_condition(
+    cond: Mapping[str, Any], snapshot: Mapping[str, float]
+) -> tuple[bool, str | None]:
     """Devuelve (ok, missing_feature). snapshot tiene valores normalizados."""
-    feat = cond.get("feature")
-    if feat not in snapshot:
+    feat = cast(str | None, cond.get("feature"))
+    if feat is None or feat not in snapshot:
         return False, feat
     left = snapshot.get(feat)
     if left is None:
         return False, feat
-    op = cond.get("op", "==")
-    right = cond.get("value")
-    try:
-        fn = _OPS[op]
-    except KeyError:
+    op = cast(str, cond.get("op", "=="))
+    right_raw = cond.get("value")
+    right = try_float(right_raw)
+    if right is None:
+        return False, None
+    fn = _OPS.get(op)
+    if fn is None:
         return False, None
     try:
         return fn(float(left), float(right)), None
@@ -249,41 +278,42 @@ def check_condition(cond: dict[str, Any], snapshot: dict[str, float]) -> tuple[b
 
 
 def eval_clause_ex(
-    clause: dict[str, Any], snapshot: dict[str, float]
+    clause: Mapping[str, Any], snapshot: Mapping[str, float]
 ) -> tuple[bool, list[str], int, int, str]:
     """
     Evalúa 'all'/'any' y devuelve:
       (resultado_bool, faltantes, true_count, total_count, mode)
     """
     missing: list[str] = []
-    if "all" in clause:
-        conds = clause["all"] or []
-        oks = []
-        for c in conds:
-            ok, miss = check_condition(c, snapshot)
-            if miss:
-                missing.append(miss)
-            oks.append(ok)
-        true_count = sum(1 for x in oks if x)
-        return all(oks), missing, true_count, len(conds), "all"
 
-    if "any" in clause:
-        conds = clause["any"] or []
-        oks = []
-        for c in conds:
+    all_cond = clause.get("all")
+    if isinstance(all_cond, list):
+        oks_all: list[bool] = []
+        for c in all_cond:
             ok, miss = check_condition(c, snapshot)
             if miss:
                 missing.append(miss)
-            oks.append(ok)
-        true_count = sum(1 for x in oks if x)
-        return any(oks), missing, true_count, len(conds), "any"
+            oks_all.append(ok)
+        true_count = sum(1 for x in oks_all if x)
+        return all(oks_all), missing, true_count, len(all_cond), "all"
+
+    any_cond = clause.get("any")
+    if isinstance(any_cond, list):
+        oks_any: list[bool] = []
+        for c in any_cond:
+            ok, miss = check_condition(c, snapshot)
+            if miss:
+                missing.append(miss)
+            oks_any.append(ok)
+        true_count = sum(1 for x in oks_any if x)
+        return any(oks_any), missing, true_count, len(any_cond), "any"
 
     return False, missing, 0, 0, "none"
 
 
 def eval_confirmations(
-    conf_obj: Any, snapshot: dict[str, float]
-) -> tuple[bool, list[str], list[dict]]:
+    conf_obj: Any, snapshot: Mapping[str, float]
+) -> tuple[bool, list[str], list[dict[str, Any]]]:
     """
     Soporta:
       - dict con 'all'/'any' (un solo bloque)
@@ -294,8 +324,10 @@ def eval_confirmations(
         return True, [], []
 
     blocks = conf_obj if isinstance(conf_obj, list) else [conf_obj]
+    blocks = cast(list[Mapping[str, Any]], blocks)
+
     all_missing: list[str] = []
-    details: list[dict] = []
+    details: list[dict[str, Any]] = []
     ok_all = True
 
     for blk in blocks:
@@ -321,8 +353,8 @@ class EvalResult:
 
 
 def unique(seq: list[str]) -> list[str]:
-    seen = set()
-    out = []
+    seen: set[str] = set()
+    out: list[str] = []
     for x in seq:
         if x not in seen:
             seen.add(x)
@@ -339,20 +371,18 @@ def build_buy_suggestions(
     overrides: dict[str, dict[str, Any]] = {}
 
     for sc in rules.scenarios:
-        name = sc.get("name")
+        name = cast(str, sc.get("name"))
         if name in active_scenarios:
-            eff = sc.get("effect", {}) or {}
-            syms = eff.get("prioritize_symbols", []) or []
-            for s in syms:
+            eff = cast(dict[str, Any], sc.get("effect", {}) or {})
+            for s in as_str_list(eff.get("prioritize_symbols", [])):
                 votes[s] += 1
-            # overrides por símbolo (último gana)
-            pov = eff.get("priority_overrides") or {}
+            pov = cast(dict[str, Any], eff.get("priority_overrides") or {})
             if isinstance(pov, dict):
                 overrides.update(pov)
 
     def group_of(sym: str) -> str:
         for g, cfg in rules.portfolio_groups.items():
-            if sym in (cfg or {}).get("symbols", []):
+            if sym in (cfg or {}).get("symbols", []):  # pyright: ignore[reportUnknownMemberType]
                 return g
         return "CORE"
 
@@ -364,11 +394,10 @@ def build_buy_suggestions(
         penalty = -0.30 if sym in avoids else 0.0
         score = base + group_boost + penalty
 
-        # aplicar overrides si existen
         ov = overrides.get(sym) or {}
-        bump = float(ov.get("bump", 0.0))
+        bump = try_float(ov.get("bump", 0.0)) or 0.0
         score = max(0.0, min(1.0, score + bump))
-        tags = list(ov.get("tags", []) or [])
+        tags = as_str_list(ov.get("tags", []))
 
         suggestions.append(
             {
@@ -384,7 +413,7 @@ def build_buy_suggestions(
     return suggestions
 
 
-def evaluate_tier(
+def evaluate_tier(  # noqa: C901
     tier: str,
     snapshot_rows: list[dict[str, Any]],
     rules: Rules,
@@ -392,16 +421,17 @@ def evaluate_tier(
     # Normalizar snapshot → feature -> value(float)
     snap: dict[str, float] = {}
     for row in snapshot_rows:
-        val = normalize_value(row["feature"], row["value"], row.get("aux", {}))
+        feature = cast(str, row["feature"])
+        val = normalize_value(feature, row.get("value"), row.get("aux", {}))
         if val is not None:
-            snap[row["feature"]] = float(val)
+            snap[feature] = float(val)
 
     ts = now_utc()
     block_is_terminal = bool(rules.eval_cfg.get("block_is_terminal", True))
     min_true = int(rules.eval_cfg.get("min_true_per_scenario", 2))
 
     # defaults
-    long_permission = True
+    long_permission = True  # long-only global (no se usa para gating ahora)
     risk_multiplier = 1.0
     allowed_groups = list(rules.portfolio_groups.keys()) or ["CORE"]
     prioritize: list[str] = []
@@ -416,69 +446,71 @@ def evaluate_tier(
 
     # 1) hard blocks
     for hb in rules.hard_blocks:
-        name = hb.get("name", "hard_block")
+        name = cast(str, hb.get("name", "hard_block"))
         ok, miss, _, _, _ = eval_clause_ex(hb, snap)
         if miss:
             missing_overall.extend(miss)
         if ok:
             hard_hits.append(name)
-            eff = hb.get("effect", {}) or {}
+            eff = cast(dict[str, Any], hb.get("effect", {}) or {})
             if eff.get("block_new_entries"):
                 can_open_new = False
                 blocked_by = name
-            if "block_new_entries_excluding" in eff:
+            elif "block_new_entries_excluding" in eff:
                 can_open_new = False
                 blocked_by = name
-                block_exclusions = list(eff.get("block_new_entries_excluding", []) or [])
-            if "cap_groups_to" in eff:
-                caps = eff.get("cap_groups_to") or []
-                allowed_groups = [g for g in allowed_groups if g in caps]
-            if "risk_multiplier_macro" in eff:
-                risk_multiplier = min(risk_multiplier, float(eff["risk_multiplier_macro"]))
+                block_exclusions = as_str_list(eff.get("block_new_entries_excluding", []))
+            rm_hb = try_float(eff.get("risk_multiplier_macro"))
+            if rm_hb is not None:
+                risk_multiplier = min(risk_multiplier, rm_hb)
+            caps_to = eff.get("cap_groups_to")
+            if isinstance(caps_to, list | tuple):
+                caps_list = as_str_list(caps_to)
+                allowed_groups = [g for g in allowed_groups if g in caps_list]
             if block_is_terminal and (not can_open_new):
                 break
 
     # 2) risk bands (conservador: tomar el menor multiplicador entre coincidencias)
-    band_name = None
+    band_name: str | None = None
     for rb in rules.risk_bands:
         ok, miss, _, _, _ = eval_clause_ex(rb, snap)
         if miss:
             missing_overall.extend(miss)
         if ok:
-            eff = rb.get("effect", {}) or {}
-            rm = float(eff.get("risk_multiplier_macro", risk_multiplier))
-            if rm < risk_multiplier:
+            eff = cast(dict[str, Any], rb.get("effect", {}) or {})
+            rm = try_float(eff.get("risk_multiplier_macro", risk_multiplier))
+            if rm is not None and rm < risk_multiplier:
                 risk_multiplier = rm
-                band_name = rb.get("name")
+                band_name = cast(str | None, rb.get("name"))
 
-    # ---- NUEVO: acumulador de caps por grupo (no filtra elegibilidad) ----
+    # ---- acumulador de caps por grupo (no filtra elegibilidad) ----
     group_caps_acc: dict[str, dict[str, int]] = {}
 
-    def _merge_group_caps(dst: dict, src: dict):
-        """Funde caps conservadoramente: mismo grupo => toma el MIN de max_open_positions."""
-        if not isinstance(src, dict):
+    def _merge_group_caps(dst: dict[str, dict[str, int]], src: Mapping[str, Any] | None) -> None:
+        if not isinstance(src, Mapping):
             return
         for g, cfg in src.items():
-            if not isinstance(cfg, dict):
+            if not isinstance(cfg, Mapping):
                 continue
-            try:
-                m = int(cfg.get("max_open_positions", 0))
-            except Exception:
+            m = try_float(cfg.get("max_open_positions"))  # pyright: ignore[reportUnknownMemberType]
+            m_int = int(m) if m is not None else None
+            if m_int is None:
                 continue
             if g in dst:
-                dst[g]["max_open_positions"] = min(dst[g]["max_open_positions"], m)
+                dst[g]["max_open_positions"] = min(dst[g]["max_open_positions"], m_int)
             else:
-                dst[g] = {"max_open_positions": m}
+                dst[g] = {"max_open_positions": m_int}
 
-    # 3) scenarios (cuenta verdaderas y soporta confirmations)
+    # 3) scenarios
     active_scenarios: list[str] = []
-    for sc in rules.scenarios:
-        name = sc.get("name")
+    for sc_item in rules.scenarios:
+        sc: dict[str, Any] = sc_item
+        name = cast(str, sc.get("name"))
+
         ok, miss, true_cnt, total_cnt, mode = eval_clause_ex(sc, snap)
         if miss:
             missing_overall.extend(miss)
 
-        # Activación base del escenario
         if mode == "all":
             activate = ok
         elif mode == "any":
@@ -487,43 +519,51 @@ def evaluate_tier(
         else:
             activate = False
 
-        # LOG de auditoría previo a confirmations
         logger.debug(
-            f"{tier.upper()} scen={name} mode={mode} true={true_cnt}/{total_cnt} "
-            f"min_true={min_true} pre_conf={activate}"
+            "%s scen=%s mode=%s true=%d/%d min_true=%d pre_conf=%s",
+            tier.upper(),
+            name,
+            mode,
+            true_cnt,
+            total_cnt,
+            min_true,
+            activate,
         )
 
-        # Confirmations (si existen) → deben pasar también
         if activate:
-            conf_ok, conf_missing, _conf_details = eval_confirmations(sc.get("confirmations"), snap)
+            conf = cast(dict[str, Any] | list[dict[str, Any]] | None, sc.get("confirmations"))
+            conf_ok, conf_missing, _ = eval_confirmations(conf, snap)
             if conf_missing:
                 missing_overall.extend(conf_missing)
             activate = activate and conf_ok
             logger.debug(
-                f"{tier.upper()} scen={name} confirmations -> ok={conf_ok} "
-                f"missing={conf_missing if conf_missing else '[]'} final={activate}"
+                "%s scen=%s confirmations -> ok=%s missing=%s final=%s",
+                tier.upper(),
+                name,
+                conf_ok,
+                conf_missing if conf_missing else "[]",
+                activate,
             )
 
         if activate:
             active_scenarios.append(name)
-            eff = sc.get("effect", {}) or {}
+            eff: dict[str, Any] = cast(dict[str, Any], sc.get("effect", {}) or {})
 
-            # allow_new_entries (si aplica)
             if eff.get("allow_new_entries"):
                 can_open_new = can_open_new and True
 
-            # allowed_groups (intersección) — se mantiene
             if "allowed_groups" in eff:
-                g = eff.get("allowed_groups") or []
-                allowed_groups = [x for x in allowed_groups if x in g]
+                g = as_str_list(eff.get("allowed_groups"))
+                if g:
+                    allowed_groups = [x for x in allowed_groups if x in g]
 
-            # group_caps — YA NO filtra allowed_groups; solo acumula en meta
             if "group_caps" in eff:
-                _merge_group_caps(group_caps_acc, eff.get("group_caps") or {})
+                _merge_group_caps(
+                    group_caps_acc, cast(Mapping[str, Any] | None, eff.get("group_caps"))
+                )
 
-            # colecciones para suggestions
-            prioritize.extend(eff.get("prioritize_symbols", []) or [])
-            avoid.extend(eff.get("avoid_symbols", []) or [])
+            prioritize.extend(as_str_list(eff.get("prioritize_symbols", [])))
+            avoid.extend(as_str_list(eff.get("avoid_symbols", [])))
 
     prioritize = unique(prioritize)
     avoid = unique(avoid)
@@ -531,7 +571,7 @@ def evaluate_tier(
     # 4) buy suggestions para UI
     suggestions = build_buy_suggestions(active_scenarios, rules, avoid)
 
-    meta = {
+    meta: dict[str, Any] = {
         "hard_blocks": hard_hits,
         "risk_band": band_name or "normal",
         "triggered_scenarios": active_scenarios,
@@ -541,17 +581,15 @@ def evaluate_tier(
         "buy_suggestions": suggestions,
         "missing_features": sorted(unique(missing_overall)),
         "feature_sample_size": len(snap),
-        "group_caps": group_caps_acc,  # <-- NUEVO: caps para que los aplique el router
+        "group_caps": group_caps_acc,
     }
 
-    reason = reason or (
-        f"band={meta['risk_band']} hb={'+'.join(hard_hits) if hard_hits else 'none'}"
-    )
+    reason = reason or f"band={meta['risk_band']} hb={'+'.join(hard_hits) if hard_hits else 'none'}"
 
     return EvalResult(
         tier=tier,
         ts=ts,
-        long_permission=True,  # long-only global
+        long_permission=long_permission,
         risk_multiplier=float(risk_multiplier),
         allowed_groups=allowed_groups,
         prioritize=prioritize,
@@ -561,30 +599,26 @@ def evaluate_tier(
     )
 
 
-# ---------------------------------------------------------------------------
-# Fusión fast/slow
-# ---------------------------------------------------------------------------
-
-
-def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
-    cfg = rules.fuse_cfg or {}
-    allow_logic = cfg.get("allow_logic", "fast_and_slow")
-    risk_logic = cfg.get("risk_logic", "min")
-    prioritize_logic = cfg.get("prioritize_logic", "intersection")
-    avoid_logic = cfg.get("avoid_logic", "union")
-    groups_logic = cfg.get("groups_logic", "intersection")
+def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:  # noqa: C901
+    cfg = cast(dict[str, Any], rules.fuse_cfg or {})
+    allow_logic = cast(str, cfg.get("allow_logic", "fast_and_slow"))
+    risk_logic = cast(str, cfg.get("risk_logic", "min"))
+    prioritize_logic = cast(str, cfg.get("prioritize_logic", "intersection"))
+    avoid_logic = cast(str, cfg.get("avoid_logic", "union"))
+    groups_logic = cast(str, cfg.get("groups_logic", "intersection"))
 
     def inter(a: list[str], b: list[str]) -> list[str]:
-        return [x for x in a if x in set(b)]
+        bset = set(b)
+        return [x for x in a if x in bset]
 
     def uni(a: list[str], b: list[str]) -> list[str]:
         return unique(a + b)
 
     # can_open_new
     if allow_logic == "fast_and_slow":
-        can_open_new = fast.meta.get("can_open_new", False) and slow.meta.get("can_open_new", False)
+        can_open_new = bool(fast.meta.get("can_open_new")) and bool(slow.meta.get("can_open_new"))
     elif allow_logic == "fast_or_slow":
-        can_open_new = fast.meta.get("can_open_new", False) or slow.meta.get("can_open_new", False)
+        can_open_new = bool(fast.meta.get("can_open_new")) or bool(slow.meta.get("can_open_new"))
     else:
         can_open_new = False
 
@@ -597,40 +631,40 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
         rm = min(fast.risk_multiplier, slow.risk_multiplier)
 
     # groups
-    if groups_logic == "intersection":
-        allowed_groups = inter(fast.allowed_groups, slow.allowed_groups)
-    else:
-        allowed_groups = uni(fast.allowed_groups, slow.allowed_groups)
+    allowed_groups = (
+        inter(fast.allowed_groups, slow.allowed_groups)
+        if groups_logic == "intersection"
+        else uni(fast.allowed_groups, slow.allowed_groups)
+    )
 
     # prioritize & avoid
-    if prioritize_logic == "intersection":
-        prioritize = inter(fast.prioritize, slow.prioritize)
-    else:
-        prioritize = uni(fast.prioritize, slow.prioritize)
+    prioritize = (
+        inter(fast.prioritize, slow.prioritize)
+        if prioritize_logic == "intersection"
+        else uni(fast.prioritize, slow.prioritize)
+    )
+    avoid = uni(fast.avoid, slow.avoid) if avoid_logic == "union" else inter(fast.avoid, slow.avoid)
 
-    if avoid_logic == "union":
-        avoid = uni(fast.avoid, slow.avoid)
-    else:
-        avoid = inter(fast.avoid, slow.avoid)
-
-    # ---- NEW: merge group_caps conservador (min por grupo) ----
-    def _merge_caps(a: dict | None, b: dict | None) -> dict:
+    # merge group_caps conservador (min por grupo)
+    def _merge_caps(a: Any, b: Any) -> dict[str, dict[str, int]]:
         out: dict[str, dict[str, int]] = {}
 
-        def _add(src: dict | None):
+        def _add(src: Any) -> None:
             if not isinstance(src, dict):
                 return
-            for g, cfg in src.items():
-                if not isinstance(cfg, dict):
+            for g, cfg_g in src.items():
+                if not isinstance(cfg_g, dict):
                     continue
-                try:
-                    m = int(cfg.get("max_open_positions", 0))
-                except Exception:
+                m = try_float(
+                    cfg_g.get("max_open_positions")
+                )  # pyright: ignore[reportUnknownMemberType]
+                m_int = int(m) if m is not None else None
+                if m_int is None:
                     continue
                 if g in out:
-                    out[g]["max_open_positions"] = min(out[g]["max_open_positions"], m)
+                    out[g]["max_open_positions"] = min(out[g]["max_open_positions"], m_int)
                 else:
-                    out[g] = {"max_open_positions": m}
+                    out[g] = {"max_open_positions": m_int}
 
         _add(a)
         _add(b)
@@ -639,38 +673,44 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
     fused_caps = _merge_caps(fast.meta.get("group_caps"), slow.meta.get("group_caps"))
 
     # buy suggestions (intersección + promedio score)
-    f_sug = {s["symbol"]: s for s in fast.meta.get("buy_suggestions", [])}
-    s_sug = {s["symbol"]: s for s in slow.meta.get("buy_suggestions", [])}
+    f_sug = {
+        s["symbol"]: s for s in cast(list[dict[str, Any]], fast.meta.get("buy_suggestions", []))
+    }
+    s_sug = {
+        s["symbol"]: s for s in cast(list[dict[str, Any]], slow.meta.get("buy_suggestions", []))
+    }
     fused_syms = set(f_sug.keys()) & set(s_sug.keys())
     buy_suggestions: list[dict[str, Any]] = []
     for sym in fused_syms:
         fs = f_sug[sym]
         ss = s_sug[sym]
+        fs_score = try_float(fs.get("score")) or 0.0
+        ss_score = try_float(ss.get("score")) or 0.0
         buy_suggestions.append(
             {
                 "symbol": sym,
                 "group": fs.get("group") or ss.get("group"),
-                "score": round((float(fs.get("score", 0)) + float(ss.get("score", 0))) / 2.0, 2),
-                "reasons": unique((fs.get("reasons") or []) + (ss.get("reasons") or [])),
-                "tags": unique((fs.get("tags") or []) + (ss.get("tags") or [])),
+                "score": round((fs_score + ss_score) / 2.0, 2),
+                "reasons": unique(as_str_list(fs.get("reasons")) + as_str_list(ss.get("reasons"))),
+                "tags": unique(as_str_list(fs.get("tags")) + as_str_list(ss.get("tags"))),
             }
         )
     buy_suggestions.sort(key=lambda x: x["score"], reverse=True)
 
-    meta = {
+    meta: dict[str, Any] = {
         "hard_blocks": unique(
-            (fast.meta.get("hard_blocks") or []) + (slow.meta.get("hard_blocks") or [])
+            as_str_list(fast.meta.get("hard_blocks")) + as_str_list(slow.meta.get("hard_blocks"))
         ),
         "risk_band": f"fast={fast.meta.get('risk_band')} | slow={slow.meta.get('risk_band')}",
         "triggered_scenarios": unique(
-            (fast.meta.get("triggered_scenarios") or [])
-            + (slow.meta.get("triggered_scenarios") or [])
+            as_str_list(fast.meta.get("triggered_scenarios"))
+            + as_str_list(slow.meta.get("triggered_scenarios"))
         ),
         "can_open_new": bool(can_open_new),
         "blocked_by": slow.meta.get("blocked_by") or fast.meta.get("blocked_by"),
         "buy_suggestions": buy_suggestions,
         "fuse": rules.fuse_cfg,
-        "group_caps": fused_caps,  # <-- NEW
+        "group_caps": fused_caps,
     }
 
     return EvalResult(
@@ -691,7 +731,7 @@ def fuse_states(fast: EvalResult, slow: EvalResult, rules: Rules) -> EvalResult:
 # ---------------------------------------------------------------------------
 
 
-def run_once(conn, rules: Rules, tier: str):
+def run_once(conn: PGConnection, rules: Rules, tier: str) -> EvalResult:
     rows = get_latest_features(conn)
     return evaluate_tier(tier=tier, snapshot_rows=rows, rules=rules)
 
@@ -705,8 +745,13 @@ def main() -> None:
     slow_every = env_int("SLOW_EVERY_SEC", 3600)
 
     logger.info(
-        f"Arrancando evaluator | DB={creds.host}:{creds.port}/{creds.dbname} "
-        f"fast={fast_every}s slow={slow_every}s rules={rules_path}"
+        "Arrancando evaluator | DB=%s:%d/%s fast=%ds slow=%ds rules=%s",
+        creds.host,
+        creds.port,
+        creds.dbname,
+        fast_every,
+        slow_every,
+        rules_path,
     )
 
     next_fast = now_utc()
@@ -714,9 +759,9 @@ def main() -> None:
     fast_res: EvalResult | None = None
 
     while True:
+        did_work = False
         try:
-            with closing(psycopg2.connect(**creds.__dict__)) as conn:
-                did_work = False
+            with closing(psycopg2.connect(**asdict(creds))) as conn:
                 now = now_utc()
 
                 # FAST
@@ -725,13 +770,19 @@ def main() -> None:
                     fast_res = run_once(conn, rules, tier="fast")
                     ms = int((time.time() - t0) * 1000)
                     logger.info(
-                        f"Eval fast | can_open_new={fast_res.meta['can_open_new']} "
-                        f"rm={fast_res.risk_multiplier:.2f} band={fast_res.meta['risk_band']} "
-                        f"hb={'+'.join(fast_res.meta['hard_blocks']) if fast_res.meta['hard_blocks'] else 'none'} "
-                        f"scen={len(fast_res.meta['triggered_scenarios'])} "
-                        f"groups={','.join(fast_res.allowed_groups)} "
-                        f"missing={len(fast_res.meta['missing_features'])} "
-                        f"snap={fast_res.meta['feature_sample_size']} | ms={ms}"
+                        (
+                            "Eval fast | can_open_new=%s rm=%.2f band=%s hb=%s "
+                            "scen=%d groups=%s missing=%d snap=%d | ms=%d"
+                        ),
+                        fast_res.meta.get("can_open_new"),
+                        fast_res.risk_multiplier,
+                        fast_res.meta.get("risk_band"),
+                        "+".join(as_str_list(fast_res.meta.get("hard_blocks"))) or "none",
+                        len(as_str_list(fast_res.meta.get("triggered_scenarios"))),
+                        ",".join(fast_res.allowed_groups),
+                        len(as_str_list(fast_res.meta.get("missing_features"))),
+                        int(fast_res.meta.get("feature_sample_size", 0)),
+                        ms,
                     )
                     insert_macro_state(conn, **fast_res.__dict__)
                     did_work = True
@@ -743,35 +794,50 @@ def main() -> None:
                     slow_res = run_once(conn, rules, tier="slow")
                     ms = int((time.time() - t0) * 1000)
                     logger.info(
-                        f"Eval slow | can_open_new={slow_res.meta['can_open_new']} "
-                        f"rm={slow_res.risk_multiplier:.2f} band={slow_res.meta['risk_band']} "
-                        f"hb={'+'.join(slow_res.meta['hard_blocks']) if slow_res.meta['hard_blocks'] else 'none'} "
-                        f"scen={len(slow_res.meta['triggered_scenarios'])} "
-                        f"groups={','.join(slow_res.allowed_groups)} "
-                        f"missing={len(slow_res.meta['missing_features'])} "
-                        f"snap={slow_res.meta['feature_sample_size']} | ms={ms}"
+                        (
+                            "Eval slow | can_open_new=%s rm=%.2f band=%s hb=%s "
+                            "scen=%d groups=%s missing=%d snap=%d | ms=%d"
+                        ),
+                        slow_res.meta.get("can_open_new"),
+                        slow_res.risk_multiplier,
+                        slow_res.meta.get("risk_band"),
+                        "+".join(as_str_list(slow_res.meta.get("hard_blocks"))) or "none",
+                        len(as_str_list(slow_res.meta.get("triggered_scenarios"))),
+                        ",".join(slow_res.allowed_groups),
+                        len(as_str_list(slow_res.meta.get("missing_features"))),
+                        int(slow_res.meta.get("feature_sample_size", 0)),
+                        ms,
                     )
                     insert_macro_state(conn, **slow_res.__dict__)
 
                     if fast_res is None:
                         fast_res = slow_res  # fallback defensivo
                     fused = fuse_states(fast_res, slow_res, rules)
+                    allow_logic_log = cast(str, rules.fuse_cfg.get("allow_logic", "fast_and_slow"))
+                    risk_logic_log = cast(str, rules.fuse_cfg.get("risk_logic", "min"))
+
                     logger.info(
-                        f"FUSE | allow={rules.fuse_cfg.get('allow_logic', 'fast_and_slow')} "
-                        f"risk={rules.fuse_cfg.get('risk_logic', 'min')} -> "
-                        f"can_open_new={fused.meta['can_open_new']} "
-                        f"rm={fused.risk_multiplier:.2f} groups={','.join(fused.allowed_groups)} "
-                        f"prio={len(fused.prioritize)} avoid={len(fused.avoid)}"
+                        (
+                            "FUSE | allow=%s risk=%s -> can_open_new=%s rm=%.2f "
+                            "groups=%s prio=%d avoid=%d"
+                        ),
+                        allow_logic_log,
+                        risk_logic_log,
+                        fused.meta.get("can_open_new"),
+                        fused.risk_multiplier,
+                        ",".join(fused.allowed_groups),
+                        len(fused.prioritize),
+                        len(fused.avoid),
                     )
+
                     insert_macro_state(conn, **fused.__dict__)
                     did_work = True
                     next_slow = now + timedelta(seconds=slow_every)
 
-        except Exception as e:
-            logger.error(f"[evaluator] error: {e}")
+        except Exception as e:  # pragma: no cover - robustez en runtime
+            logger.error("[evaluator] error: %s", e)
 
         if not did_work:
-            # dormir 1s para no consumir CPU entre checks
             time.sleep(1)
 
 

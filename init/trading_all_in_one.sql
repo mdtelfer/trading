@@ -3,19 +3,8 @@
 -- Unificado: Macro + Técnico + Analytics (idempotente, long-only, UTC)
 -- ============================================================================
 
--- 0) Extensiones (blindadas)
-CREATE EXTENSION IF NOT EXISTS plpgsql;
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-CREATE EXTENSION IF NOT EXISTS timescaledb;
-DO $$
-BEGIN
-  IF EXISTS (SELECT 1 FROM pg_available_extensions WHERE name = 'timescaledb_toolkit') THEN
-    EXECUTE 'CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit';
-  ELSE
-    RAISE NOTICE 'timescaledb_toolkit no disponible; se omite.';
-  END IF;
-END$$;
 
+-- Este script crea las tablas, tipos, vistas y funciones necesarias para el sistema de trading.
 -- 1) Schemas
 CREATE SCHEMA IF NOT EXISTS core;
 CREATE SCHEMA IF NOT EXISTS analytics;
