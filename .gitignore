@@ -53,3 +53,12 @@ Thumbs.db
 # Entornos virtuales de Python
 python.exe
 pythonw.exe
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# CSVs en raíz (mantén los de /configs)
+# ignora solo CSV en nivel raíz
+/*.csv

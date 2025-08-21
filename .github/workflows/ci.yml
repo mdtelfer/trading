@@ -58,10 +58,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
-      - name: Install deps
+        with: { python-version: '3.12' }
+      - name: Install deps (dev)
         run: |
-          pip install -r requirements.txt || true
+          pip install -r requirements-dev.txt || true
           pip install ruff
       - name: Ruff
         run: ruff check .
+      - name: Ruff format
+        run: ruff format .
+
+      - name: Black
+        run: black --check .
+
+      - name: mypy
+        run: mypy .

@@ -1,3 +1,6 @@
+![CI](https://github.com/mdtelfer/trading/actions/workflows/ci.yml/badge.svg)
+
+
     # Trading Macro-Fundamental Evaluator
 
     Sistema de **trading algorítmico** con enfoque *long-only*, que integra análisis fundamental y técnico para habilitar o bloquear operaciones, bajo reglas estrictas de riesgo y disciplina.
