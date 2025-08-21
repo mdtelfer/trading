@@ -8,5 +8,23 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
-[*.{yml,yaml}]
+# YAML/TOML/JSON suelen ir a 2 espacios
+[*.{yml,yaml,toml,json}]
 indent_size = 2
+
+# SQL: 2 espacios suele ayudar con anidaciones largas
+[*.sql]
+indent_size = 2
+
+# Markdown: no recortar espacios (se usan para saltos de línea)
+[*.md]
+trim_trailing_whitespace = false
+
+# Makefiles necesitan TABs, no espacios
+[Makefile]
+indent_style = tab
+
+# Python: Black ya formatea; solo aseguramos 4 espacios y LF
+[*.py]
+indent_size = 4
+end_of_line = lf
