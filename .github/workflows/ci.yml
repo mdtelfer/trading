@@ -1,0 +1,55 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  db-schema:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: timescale/timescaledb:2.17.0-pg17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: trading
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d trading"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install psql client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Init schema
+        env:
+          PGPASSWORD: postgres
+        run: |
+          until pg_isready -h localhost -p 5432 -U postgres -d trading; do sleep 1; done
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS timescaledb;"
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -f init/trading_all_in_one.sql
+      - name: Smoke queries
+        env:
+          PGPASSWORD: postgres
+        run: |
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT count(*) FROM timescaledb_information.hypertables;"
+          psql -h localhost -U postgres -d trading -v ON_ERROR_STOP=1 -c "SELECT 1;"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt || true
+          pip install ruff
+      - name: Ruff
+        run: ruff check .
