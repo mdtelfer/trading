@@ -124,7 +124,7 @@ def load_db_creds() -> DBCreds:
 def get_latest_features(conn) -> list[dict[str, Any]]:
     """Lee snapshot simple de core.v_macro_latest."""
     sql = """
-        SELECT feature, value, ts, aux_values, status
+        SELECT feature, value, ts_utc, aux_values, status
         FROM core.v_macro_latest
     """
     with conn.cursor() as cur:

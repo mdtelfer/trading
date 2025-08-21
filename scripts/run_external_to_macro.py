@@ -689,12 +689,12 @@ def main() -> None:  # noqa: C901
                     with conn.cursor() as cur:
                         cur.execute(
                             """
-                            SELECT feature, value, ts
+                            SELECT feature, value, ts_utc
                             FROM (
-                                SELECT DISTINCT ON (feature) feature, value, ts
+                                SELECT DISTINCT ON (feature) feature, value, ts_utc
                                 FROM core.macro_ticks
                                 WHERE feature IN ('UST10Y','UST2Y')
-                                ORDER BY feature, ts DESC
+                                ORDER BY feature, ts_utc DESC
                             ) q;
                         """
                         )
@@ -721,12 +721,12 @@ def main() -> None:  # noqa: C901
                     with conn.cursor() as cur:
                         cur.execute(
                             """
-                            SELECT feature, value, ts
+                            SELECT feature, value, ts_utc
                             FROM (
-                                SELECT DISTINCT ON (feature) feature, value, ts
+                                SELECT DISTINCT ON (feature) feature, value, ts_utc
                                 FROM core.macro_ticks
                                 WHERE feature IN ('HYG','LQD')
-                                ORDER BY feature, ts DESC
+                                ORDER BY feature, ts_utc DESC
                             ) q;
                         """
                         )
@@ -753,12 +753,12 @@ def main() -> None:  # noqa: C901
                     with conn.cursor() as cur:
                         cur.execute(
                             """
-                            SELECT feature, value, ts
+                            SELECT feature, value, ts_utc
                             FROM (
-                                SELECT DISTINCT ON (feature) feature, value, ts
+                                SELECT DISTINCT ON (feature) feature, value, ts_utc
                                 FROM core.macro_ticks
                                 WHERE feature IN ('COPPER','GOLD_FUT')
-                                ORDER BY feature, ts DESC
+                                ORDER BY feature, ts_utc DESC
                             ) q;
                         """
                         )
